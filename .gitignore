@@ -29,3 +29,15 @@ obj/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# ============ #
+# Other        #
+# ============ #
+*.prv
+*.aux
+*.log
+*.pdf
+*.dvi
+*.out
+*.toc
+_region_.tex
