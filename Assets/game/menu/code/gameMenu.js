@@ -25,7 +25,7 @@ function OnMouseUp(){
 		*/
 	} else {
 		// This loads the MainScene 
-		Application.LoadLevel("mainLevel");
+		Application.LoadLevel("level1");
 	}
 }
 
