@@ -14,6 +14,11 @@ public class buttonManager : MonoBehaviour {
 		Debug.Log ("Go back");
 	}
 
+	public void play() {
+		int level = PlayerPrefs.GetInt ("level");
+		Application.LoadLevel ("level" + level);
+	}
+
 	private void bloodScrollBar() {
 		// get bar value
 		float value = bloodBar.value;

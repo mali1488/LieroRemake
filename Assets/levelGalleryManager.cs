@@ -20,6 +20,7 @@ public class levelGalleryManager : MonoBehaviour
 			currentLevel++;
 		}
 		currentImg.sprite = mySprites [currentLevel];
+		//PlayerPrefs.SetString ("level", "level" + currentLevel);
 	}
 
 	public void saveLevel() {
