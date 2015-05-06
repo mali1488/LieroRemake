@@ -4,9 +4,11 @@ using System.Collections;
 public class MenuManager : MonoBehaviour {
 
 	public Menu CurrentMenu;
+	public translation translationTool;
 
 	public void Start() {
 		ShowMenu (CurrentMenu);
+		translationTool = new translation ();
 	}
 
 	public void ShowMenu(Menu menu) {

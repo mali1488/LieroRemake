@@ -9,9 +9,19 @@ public class buttonManager : MonoBehaviour {
 	public Text bloodText;
 	public Text livesText;
 	public Toggle regenerateLife;
+	public translation translationTool;
 
 	public void back() {
 		Debug.Log ("Go back");
+	}
+
+	public void changeLanguage() {
+		if (translationTool.choosenLanguage == translation.language.ENG) {
+			translationTool.choosenLanguage = translation.language.SWE;
+		} else {
+			translationTool.choosenLanguage = translation.language.ENG;
+		}
+		
 	}
 
 	public void play() {
@@ -49,6 +59,5 @@ public class buttonManager : MonoBehaviour {
 	public void OnGUI() {
 		bloodScrollBar ();
 		livesScrollBar ();
-		
 	}
 }
