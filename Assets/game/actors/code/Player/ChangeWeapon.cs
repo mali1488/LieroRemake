@@ -13,7 +13,7 @@ public class ChangeWeapon : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		testList = Resources.LoadAll<Sprite>("Textures");
-		arrow.GetComponent<SpriteRenderer>().sprite = testList[1];
+		//arrow.GetComponent<SpriteRenderer>().sprite = testList[0];
 	
 		//for testing purposes
 		PlayerPrefs.SetInt("ak47", 1);
@@ -26,9 +26,9 @@ public class ChangeWeapon : MonoBehaviour {
 		
 		PlayerPrefs.SetInt("shotgun", 1);
 		//
-		Debug.Log("before");
+
 		if (PlayerPrefs.GetInt("bazooka") == 1) {
-			Debug.Log("test");
+
 			bulletDamage = 20;
 			weaponList.Add("bazooka");
 		}

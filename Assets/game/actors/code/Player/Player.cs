@@ -26,7 +26,7 @@ public class Player : MonoBehaviour {
   public ArrayList weaponList = new ArrayList ();
   public int currentWeapon = 0;
   public ChangeWeapon changeWeapon;
-	private weapon weapon;
+  private weapon weapon;
 
   public void Start() {
     _controller = GetComponent<CharacterController2D>();
