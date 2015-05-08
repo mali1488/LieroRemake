@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
   public void Start() {
     _controller = GetComponent<CharacterController2D>();
     _isFacingRight = transform.localScale.x > 0;
-	Debug.Log("transform = " + _controller.transform);
+	//Debug.Log("transform = " + _controller.transform);
 	aim.aiming(_isFacingRight, _controller.transform.position);
 	for (int i=0; i < 5; i++) {
 		weaponList.Add(i);

@@ -5,15 +5,11 @@ public class bulletNoGravity : MonoBehaviour {
 	public Rigidbody2D r;
 	public float bulletAngle;
 	public float bulletSpeed;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+
 	public void set(float angle,bool isFacingRight,float speed){
 		bulletSpeed = speed;
 		bulletAngle = angle;
-		Debug.Log ("set");
+		//Debug.Log ("set");
 	}
 	
 	// Update is called once per frame
