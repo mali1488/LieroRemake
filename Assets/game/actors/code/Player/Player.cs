@@ -84,9 +84,8 @@ public class Player : MonoBehaviour {
 
 	//Weaponchange input
 	if (Input.GetKeyDown(prevWeaponPlayer1)) {
-		Debug.Log("Previous Weapon ");
 		if (currentWeapon == 0) {
-			currentWeapon = 5;
+			currentWeapon = changeWeapon.weaponList.Count-1;
 		} else {
 		    currentWeapon -= 1;
 		}
@@ -94,8 +93,7 @@ public class Player : MonoBehaviour {
 	}
 
 	if (Input.GetKeyDown(nextWeaponPlayer1)) {
-		Debug.Log("Next Weapon");
-		if (currentWeapon == 5) {
+		if (currentWeapon == changeWeapon.weaponList.Count-1) {
 			currentWeapon = 0;
 		} else {
 			currentWeapon += 1;
