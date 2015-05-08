@@ -12,8 +12,8 @@ public class ChangeWeapon : MonoBehaviour {
 	public GameObject arrow;
 	// Use this for initialization
 	void Start () {
-		testList = Resources.LoadAll<Sprite>("textures");
-		arrow.GetComponent<SpriteRenderer>().sprite = testList[0];
+		testList = Resources.LoadAll<Sprite>("Textures");
+		arrow.GetComponent<SpriteRenderer>().sprite = testList[1];
 	
 		//for testing purposes
 		PlayerPrefs.SetInt("ak47", 1);
@@ -65,10 +65,8 @@ public class ChangeWeapon : MonoBehaviour {
 	public void swapWeapon(int weaponNumber){
 		Debug.Log ("New Weapon is: " + weaponList[weaponNumber]);
 		
+		//arrow.GetComponent<SpriteRenderer>().sprite = testList[weaponNumber];
 		
 	}
 
-	public void weaponInfo(string name, int texture, int bulletTexture, int damage) {
-
-	}
 }
