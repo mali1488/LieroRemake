@@ -20,11 +20,13 @@ public class Player : MonoBehaviour {
   public KeyCode aimDownPlayer1 = KeyCode.S;
   private KeyCode prevWeaponPlayer1 = KeyCode.Q;
   private KeyCode nextWeaponPlayer1 = KeyCode.E;
+  private KeyCode shootPlayer1 = KeyCode.Z;
 
   //Weapon variables
   public ArrayList weaponList = new ArrayList ();
   public int currentWeapon = 0;
   public ChangeWeapon changeWeapon;
+	private weapon weapon;
 
   public void Start() {
     _controller = GetComponent<CharacterController2D>();
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour {
 	for (int i=0; i < 5; i++) {
 		weaponList.Add(i);
 	}
+	weapon = new weapon ();
   }
 
   public void Update() {
@@ -103,6 +106,9 @@ public class Player : MonoBehaviour {
 			changeWeapon.swapWeapon(currentWeapon);
 	}
 
+	if (Input.GetKeyDown (shootPlayer1)) {
+		weapon.shoot(_controller.transform.position, aim.angle, aim.sight.position,_controller.transform.rotation,_isFacingRight);
+	}
   }
 
   private void Flip() {
