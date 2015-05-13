@@ -40,7 +40,7 @@ public class Aim : MonoBehaviour {
 		}
 		
 		if (!up && !down) {
-			Debug.Log ("specialcase");
+			//Debug.Log ("specialcase");
 
 			//måste fixas för att arrow ska vändas rätt.. 
 		}

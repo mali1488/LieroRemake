@@ -6445,7 +6445,7 @@ GameObject:
   - 114: {fileID: 927087244}
   - 95: {fileID: 927087243}
   m_Layer: 5
-  m_Name: LevelSelectMenu
+  m_Name: controlChange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10284,7 +10284,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\xF6"
+  m_Text: y
 --- !u!222 &1628007484
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12780,7 +12780,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .65882355, g: .807843149, b: 1, a: .752941191}
-  m_Text: "\xF6"
+  m_Text: y
   m_CaretBlinkRate: 1.70000005
 --- !u!114 &1997981198
 MonoBehaviour:

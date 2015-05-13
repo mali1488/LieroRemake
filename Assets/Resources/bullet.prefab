@@ -13,7 +13,7 @@ GameObject:
   - 61: {fileID: 6152686}
   - 114: {fileID: 11409920}
   - 114: {fileID: 11481834}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,6 +73,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   r: {fileID: 0}
   angle: 0
+  Spawn: {fileID: 100000, guid: 424f386e8caee6f4f930b1c777575411, type: 2}
+  SpawnCooldown: 1
 --- !u!114 &11481834
 MonoBehaviour:
   m_ObjectHideFlags: 1

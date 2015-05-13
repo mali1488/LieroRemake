@@ -12,7 +12,7 @@ GameObject:
   - 199: {fileID: 19900000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SmallSparksExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   StampTex: {fileID: 2800000, guid: bbf971521ed77e04485016f0535821cf, type: 3}
   Hardness: 1
-  Size: {x: .300000012, y: .300000012}
+  Size: {x: 4.05000019, y: 4.92000008}
   AngleOffset: 0
   AngleRandomness: 0
   HasExploded: 0
@@ -69,7 +69,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  lengthInSec: 5
+  lengthInSec: .879999995
   startDelay: 0
   speed: 1
   randomSeed: 0
@@ -230,7 +230,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 2
+      scalar: 100
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -245,7 +245,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .5
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -277,7 +277,7 @@ ParticleSystem:
       minMaxState: 3
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 1000
+    maxNumParticles: 279
   ShapeModule:
     serializedVersion: 2
     enabled: 0
@@ -1108,7 +1108,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1837952695
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MaxParticleSize: .5
