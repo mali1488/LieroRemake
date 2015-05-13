@@ -48,6 +48,8 @@ public class Player : MonoBehaviour {
 		}
 		weapon = new weapon ();
 
+		// The real keybindings choosen from the main menu
+		/* 
 		moveRightPlayer1 = PlayerPrefs.GetString ("right");
 		moveLeftPlayer1 = PlayerPrefs.GetString ("left");
 		aimUpPlayer1 = PlayerPrefs.GetString ("up");
@@ -62,6 +64,23 @@ public class Player : MonoBehaviour {
 		aimUpPlayer2 = PlayerPrefs.GetString ("up2");
 		aimDownPlayer2 = PlayerPrefs.GetString ("down2");
 		shootPlayer2 = PlayerPrefs.GetString ("shoot2");
+		*/
+
+		// Temporary keybindings for developing purposes
+		moveRightPlayer1 = "d";
+		moveLeftPlayer1 = "a";
+		aimUpPlayer1 = "w";
+		aimDownPlayer1 = "s";
+		prevWeaponPlayer1 = "e";
+		nextWeaponPlayer1 = "1";
+		shootPlayer1 = "z";
+		jump1 = "space";
+		
+		moveRightPlayer2 = "right";
+		moveLeftPlayer2 = "left";
+		aimUpPlayer2 = "up";
+		aimDownPlayer2 = "down";
+		shootPlayer2 = "m";
 	}
 
 
