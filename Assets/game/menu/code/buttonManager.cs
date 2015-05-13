@@ -39,7 +39,7 @@ public class buttonManager : MonoBehaviour {
 
 		PlayerPrefs.SetString ("jump2","m");
 		PlayerPrefs.SetString ("shoot2","n");
-		PlayerPrefs.SetString ("right2","ö");
+		PlayerPrefs.SetString ("right2","y");
 		PlayerPrefs.SetString ("left2","k");
 		PlayerPrefs.SetString ("up2","o");
 		PlayerPrefs.SetString ("down2","l");

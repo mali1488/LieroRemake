@@ -26,11 +26,11 @@ public class Player : MonoBehaviour {
 	private string shootPlayer1;
 	private string jump1;
 
-	private string moveRightPlayer2 = KeyCode.RightArrow;
-	private string moveLeftPlayer2 = KeyCode.LeftArrow;
-	private string aimUpPlayer2 = KeyCode.UpArrow;
-	private string aimDownPlayer2 = KeyCode.DownArrow;
-	private string shootPlayer2 = KeyCode.LeftControl;
+	private string moveRightPlayer2;
+	private string moveLeftPlayer2;
+	private string aimUpPlayer2;
+	private string aimDownPlayer2;
+	private string shootPlayer2;
 
 	//Weapon variables
 	public ArrayList weaponList = new ArrayList ();
