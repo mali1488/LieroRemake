@@ -13,31 +13,43 @@ public class Player : MonoBehaviour {
   
   public Aim aim;
 
-  // keycode variables
-  public KeyCode moveRightPlayer1 = KeyCode.D;
-  public KeyCode moveLeftPlayer1 = KeyCode.A;
-  public KeyCode aimUpPlayer1 = KeyCode.W;
-  public KeyCode aimDownPlayer1 = KeyCode.S;
-  private KeyCode prevWeaponPlayer1 = KeyCode.Q;
-  private KeyCode nextWeaponPlayer1 = KeyCode.E;
-  private KeyCode shootPlayer1 = KeyCode.Z;
+  // input variables player one
+	public string moveRightPlayer1;
+	public string moveLeftPlayer1;
+	public string aimUpPlayer1;
+	public string aimDownPlayer1;
+	private string prevWeaponPlayer1;
+	private string nextWeaponPlayer1;
+	private string shootPlayer1;
+	private string jump1;
 
-  //Weapon variables
-  public ArrayList weaponList = new ArrayList ();
-  public int currentWeapon = 0;
-  public ChangeWeapon changeWeapon;
-  private weapon weapon;
+	//Weapon variables
+	public ArrayList weaponList = new ArrayList ();
+	public int currentWeapon = 0;
+	public ChangeWeapon changeWeapon;
+	private weapon weapon;
+	
+	public void Start() {	
+		_controller = GetComponent<CharacterController2D>();
+    	_isFacingRight = transform.localScale.x > 0;
+		//Debug.Log("transform = " + _controller.transform);
+		aim.aiming(_isFacingRight, _controller.transform.position);
+		for (int i=0; i < 5; i++) {
+			weaponList.Add(i);
+		}
+		weapon = new weapon ();
 
-  public void Start() {
-    _controller = GetComponent<CharacterController2D>();
-    _isFacingRight = transform.localScale.x > 0;
-	//Debug.Log("transform = " + _controller.transform);
-	aim.aiming(_isFacingRight, _controller.transform.position);
-	for (int i=0; i < 5; i++) {
-		weaponList.Add(i);
-	}
-	weapon = new weapon ();
-  }
+		moveRightPlayer1 = PlayerPrefs.GetString ("right");
+		moveLeftPlayer1 = PlayerPrefs.GetString ("left");
+		aimUpPlayer1 = PlayerPrefs.GetString ("up");
+		aimDownPlayer1 = PlayerPrefs.GetString ("down");
+		prevWeaponPlayer1 = PlayerPrefs.GetString ("next");
+		nextWeaponPlayer1 = PlayerPrefs.GetString ("prev");
+		shootPlayer1 = PlayerPrefs.GetString ("shoot");
+		jump1 = PlayerPrefs.GetString ("jump");
+
+		Debug.Log (moveLeftPlayer1 + " " + moveRightPlayer1 + " jump:" + jump1 + ".");
+}
 
   public void Update() {
     HandleInput();
@@ -48,6 +60,7 @@ public class Player : MonoBehaviour {
 	}
 
   private void HandleInput() {
+		
     if (Input.GetKey(moveRightPlayer1)) {
       _normalizedHorizontalSpeed = 1;
       if(!_isFacingRight) {
@@ -64,7 +77,7 @@ public class Player : MonoBehaviour {
       _normalizedHorizontalSpeed = 0;
     }
 
-    if (_controller.CanJump && Input.GetKeyDown(KeyCode.Space)) {
+    if (_controller.CanJump && Input.GetKeyDown(jump1)) {
       _controller.Jump();
     }
 	
