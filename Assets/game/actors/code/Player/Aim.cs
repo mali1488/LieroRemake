@@ -14,12 +14,15 @@ public class Aim : MonoBehaviour {
 	public bool down = false;
 	public bool aimingBelow;
 	public float degAngle;
+	public Player player;
 
 	void Start () {
 		angle = 0.0f;
 	}
 
 	public void aiming (bool facingRight, Vector3 playerPosition){
+		
+		aimingBelow = playerPosition.y > sight.transform.position.y;
 
 		if (up) {
 			if (facingRight){
@@ -35,7 +38,12 @@ public class Aim : MonoBehaviour {
 				moveAimUp(facingRight, playerPosition);
 			} 
 		}
+		
+		if (!up && !down) {
+			Debug.Log ("specialcase");
 
+			//måste fixas för att arrow ska vändas rätt.. 
+		}
 		arrow.position = new Vector3 (playerPosition.x + offset*Mathf.Cos(angle), playerPosition.y + offset*Mathf.Sin(angle), playerPosition.z);
 		sight.position = new Vector3 (playerPosition.x + sightOffset*Mathf.Cos(angle), 
 		                              playerPosition.y + sightOffset*Mathf.Sin(angle), playerPosition.z);
@@ -47,6 +55,8 @@ public class Aim : MonoBehaviour {
 
 		if (degAngle >= 90.0f && facingRight) {
 			if(aimingBelow){
+				
+				Debug.Log("3");
 				angle +=0.03f;
 			} else { 
 				angle = Mathf.PI / 2.0f;
@@ -64,9 +74,9 @@ public class Aim : MonoBehaviour {
 			angle += 0.03f;
 
 			if(aimingBelow){
-				arrow.rotation = Quaternion.AngleAxis(-degAngle-180.0f, Vector3.forward);
+				arrow.rotation = Quaternion.AngleAxis(degAngle, Vector3.forward);
 			} else {
-				arrow.rotation = Quaternion.AngleAxis(degAngle-180.0f, Vector3.forward);
+				arrow.rotation = Quaternion.AngleAxis(-degAngle, Vector3.forward);
 			}
 		}
 	}
@@ -81,7 +91,8 @@ public class Aim : MonoBehaviour {
 			if(aimingBelow){
 				arrow.rotation = Quaternion.AngleAxis(-degAngle, Vector3.forward);
 			} else {
-				arrow.rotation = Quaternion.AngleAxis(degAngle, Vector3.forward);
+
+				arrow.rotation = Quaternion.AngleAxis(degAngle , Vector3.forward);
 			}
 		} else if (degAngle <= 90.0f && !facingRight) {
 			if(aimingBelow){
@@ -89,15 +100,14 @@ public class Aim : MonoBehaviour {
 			} else {
 				angle = Mathf.PI / 2.0f;
 			}
-
 			arrow.rotation = Quaternion.AngleAxis(degAngle -180.0f, Vector3.forward);
 		} else if (degAngle >= 90.0f && !facingRight) {
 			angle -= 0.03f;
 
 			if(aimingBelow){
-				arrow.rotation = Quaternion.AngleAxis(-degAngle-180.0f, Vector3.forward);
+				arrow.rotation = Quaternion.AngleAxis(degAngle, Vector3.forward);
 			} else {
-				arrow.rotation = Quaternion.AngleAxis(degAngle-180.0f, Vector3.forward);
+				arrow.rotation = Quaternion.AngleAxis(-degAngle, Vector3.forward);
 			}
 		}
 	}
