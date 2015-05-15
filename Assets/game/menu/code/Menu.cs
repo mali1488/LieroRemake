@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Menu : MonoBehaviour {
@@ -17,7 +17,8 @@ public class Menu : MonoBehaviour {
 		_canvasGroup = GetComponent<CanvasGroup> ();
 
 		var rect = GetComponent<RectTransform> ();
-		rect.offsetMax = rect.offsetMin = new Vector2 (0.0F,0.0F);
+		//rect.offsetMax = rect.offsetMin = new Vector2 (0.0F,0.0F);
+		rect.transform.position = new Vector2 (0.0F,0.0F);
 		//_animator.SetBool ("IsOpen",true);
 	}
 
