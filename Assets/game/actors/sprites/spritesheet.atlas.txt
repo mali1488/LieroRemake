@@ -1,0 +1,160 @@
+
+spritesheet.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bazooka
+  rotate: true
+  xy: 2, 85
+  size: 41, 232
+  orig: 41, 232
+  offset: 0, 0
+  index: -1
+carbine
+  rotate: false
+  xy: 2, 2
+  size: 183, 36
+  orig: 183, 36
+  offset: 0, 0
+  index: -1
+colt45
+  rotate: false
+  xy: 283, 49
+  size: 41, 26
+  orig: 41, 26
+  offset: 0, 0
+  index: -1
+flamegun
+  rotate: false
+  xy: 516, 93
+  size: 117, 33
+  orig: 117, 33
+  offset: 0, 0
+  index: -1
+flamepack
+  rotate: true
+  xy: 635, 91
+  size: 35, 105
+  orig: 35, 105
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 220, 2
+  size: 61, 61
+  orig: 61, 61
+  offset: 0, 0
+  index: -1
+leftFoot
+  rotate: false
+  xy: 187, 9
+  size: 18, 29
+  orig: 18, 29
+  offset: 0, 0
+  index: -1
+rightFoot
+  rotate: false
+  xy: 187, 9
+  size: 18, 29
+  orig: 18, 29
+  offset: 0, 0
+  index: -1
+leftLowerArm
+  rotate: true
+  xy: 952, 107
+  size: 19, 65
+  orig: 19, 65
+  offset: 0, 0
+  index: -1
+rightLowerArm
+  rotate: true
+  xy: 952, 107
+  size: 19, 65
+  orig: 19, 65
+  offset: 0, 0
+  index: -1
+leftLowerLeg
+  rotate: true
+  xy: 843, 94
+  size: 19, 92
+  orig: 19, 92
+  offset: 0, 0
+  index: -1
+rightLowerLeg
+  rotate: true
+  xy: 843, 94
+  size: 19, 92
+  orig: 19, 92
+  offset: 0, 0
+  index: -1
+leftUpperArm
+  rotate: true
+  xy: 516, 52
+  size: 19, 91
+  orig: 19, 91
+  offset: 0, 0
+  index: -1
+rightUpperArm
+  rotate: true
+  xy: 516, 52
+  size: 19, 91
+  orig: 19, 91
+  offset: 0, 0
+  index: -1
+leftUpperLeg
+  rotate: true
+  xy: 516, 73
+  size: 18, 104
+  orig: 18, 104
+  offset: 0, 0
+  index: -1
+rightUpperLeg
+  rotate: true
+  xy: 516, 73
+  size: 18, 104
+  orig: 18, 104
+  offset: 0, 0
+  index: -1
+mp40
+  rotate: false
+  xy: 391, 65
+  size: 123, 61
+  orig: 123, 61
+  offset: 0, 0
+  index: -1
+potatoMasher
+  rotate: false
+  xy: 843, 76
+  size: 77, 16
+  orig: 77, 16
+  offset: 0, 0
+  index: -1
+rifle
+  rotate: true
+  xy: 2, 40
+  size: 43, 216
+  orig: 43, 216
+  offset: 0, 0
+  index: -1
+rocket
+  rotate: false
+  xy: 843, 115
+  size: 107, 11
+  orig: 107, 11
+  offset: 0, 0
+  index: -1
+thompson
+  rotate: false
+  xy: 236, 77
+  size: 153, 49
+  orig: 153, 49
+  offset: 0, 0
+  index: -1
+torso
+  rotate: true
+  xy: 742, 88
+  size: 38, 99
+  orig: 38, 99
+  offset: 0, 0
+  index: -1
