@@ -13,19 +13,17 @@ public class Player : MonoBehaviour {
   public float SpeedAccelerationInAir = 5f;
 
   public bool justFlipped = false;
-  public bool player1;
-  public bool player2;
   public Aim aim;
 
-  // input variables player one
-  public string moveRightPlayer;
-  public string moveLeftPlayer;
-  public string aimUpPlayer;
-  public string aimDownPlayer;
-  public string prevWeaponPlayer;
-  public string nextWeaponPlayer;
-  public string shootPlayer;
-  public string jump;
+  //Input variables player
+  private string moveRight;
+  private string moveLeft;
+  private string aimUp;
+  private string aimDown;
+  private string prevWeapon;
+  private string nextWeapon;
+  private string shoot;
+  private string jump;
 
   //Weapon variables
   public ArrayList weaponList = new ArrayList ();
@@ -47,11 +45,34 @@ public class Player : MonoBehaviour {
   [SpineAnimation("jump")]
   public string jumpAnimation;
 
+  [SpineSlot]
+  public string gunSlot;
+
+  [SpineAttachment(currentSkinOnly: true, slotField: "gunSlot")]
+  public string carbineAttachment;
+
+  [SpineAttachment(currentSkinOnly: true, slotField: "gunSlot")]
+  public string mp40Attachment;
+
   private SkeletonAnimation skeletonAnimation = null;
+
+  public void Setup(String moveLeft, String moveRight, String aimUp, String aimDown, String prevWeapon, String nextWeapon, String shoot, String jump, int positionX, int positionY) {
+    this.moveRight = moveRight;
+    this.moveLeft = moveLeft;
+    this.aimUp = aimUp;
+    this.aimDown = aimDown;
+    this.prevWeapon = prevWeapon;
+    this.nextWeapon = nextWeapon;
+    this.shoot = shoot;
+    this.jump = jump;
+    transform.position = new Vector2(positionX, positionY);
+  }
 
   public void Start() {
     // Get the SkeletonAnimation component for the GameObject this script is attached to.
     skeletonAnimation = GetComponent<SkeletonAnimation>();
+
+    skeletonAnimation.skeleton.SetAttachment(gunSlot, carbineAttachment);
 
     _controller = GetComponent<CharacterController2D>();
     _isFacingRight = transform.localScale.x > 0;
@@ -62,23 +83,6 @@ public class Player : MonoBehaviour {
     }
     weapon = new weapon ();
 
-    // The real keybindings choosen from the main menu
-    /*
-       moveRightPlayer1 = PlayerPrefs.GetString ("right");
-       moveLeftPlayer1 = PlayerPrefs.GetString ("left");
-       aimUpPlayer1 = PlayerPrefs.GetString ("up");
-       aimDownPlayer1 = PlayerPrefs.GetString ("down");
-       prevWeaponPlayer1 = PlayerPrefs.GetString ("next");
-       nextWeaponPlayer1 = PlayerPrefs.GetString ("prev");
-       shootPlayer1 = PlayerPrefs.GetString ("shoot");
-       jump1 = PlayerPrefs.GetString ("jump");
-
-       moveRightPlayer2 = PlayerPrefs.GetString ("right2");
-       moveLeftPlayer2 = PlayerPrefs.GetString ("left2");
-       aimUpPlayer2 = PlayerPrefs.GetString ("up2");
-       aimDownPlayer2 = PlayerPrefs.GetString ("down2");
-       shootPlayer2 = PlayerPrefs.GetString ("shoot2");
-    */
   }
 
   public void Update() {
@@ -91,7 +95,7 @@ public class Player : MonoBehaviour {
   private void HandleInput() {
 
     //MOVE RIGHT
-    if (Input.GetKey(moveRightPlayer)) {
+    if (Input.GetKey(moveRight)) {
 
       _normalizedHorizontalSpeed = 1;
       if(!_isFacingRight) {
@@ -103,7 +107,7 @@ public class Player : MonoBehaviour {
       }
 
     //MOVE LEFT
-    } else if (Input.GetKey(moveLeftPlayer)) {
+    } else if (Input.GetKey(moveLeft)) {
       _normalizedHorizontalSpeed = -1;
       if(_isFacingRight) {
         Flip();
@@ -115,7 +119,7 @@ public class Player : MonoBehaviour {
     //IDLE
     } else {
       _normalizedHorizontalSpeed = 0;
-            if (_controller.State.IsGrounded) {
+      if (_controller.State.IsGrounded) {
         skeletonAnimation.AnimationName = idleAnimation;
       }
 
@@ -125,23 +129,23 @@ public class Player : MonoBehaviour {
       _controller.Jump();
     }
     //Aimingkey input
-    if (Input.GetKeyDown(aimUpPlayer)) {
+    if (Input.GetKeyDown(aimUp)) {
       aim.up = true;
     }
 
-    if (Input.GetKeyUp (aimUpPlayer)) {
+    if (Input.GetKeyUp (aimUp)) {
       aim.up = false;
     }
-    if (Input.GetKeyDown(aimDownPlayer)) {
+    if (Input.GetKeyDown(aimDown)) {
       aim.down = true;
     }
 
-    if (Input.GetKeyUp (aimDownPlayer)) {
+    if (Input.GetKeyUp (aimDown)) {
       aim.down = false;
     }
 
     //Weaponchange input
-    if (Input.GetKeyDown(prevWeaponPlayer)) {
+    if (Input.GetKeyDown(prevWeapon)) {
       if (currentWeapon == 0) {
         currentWeapon = changeWeapon.weaponList.Count-1;
       } else {
@@ -150,7 +154,7 @@ public class Player : MonoBehaviour {
       changeWeapon.swapWeapon(currentWeapon);
     }
 
-    if (Input.GetKeyDown(nextWeaponPlayer)) {
+    if (Input.GetKeyDown(nextWeapon)) {
       if (currentWeapon == changeWeapon.weaponList.Count-1) {
         currentWeapon = 0;
       } else {
@@ -159,7 +163,7 @@ public class Player : MonoBehaviour {
       changeWeapon.swapWeapon(currentWeapon);
     }
 
-    if (Input.GetKeyDown (shootPlayer) ){
+    if (Input.GetKeyDown (shoot) ){
       weapon.shoot(_controller.transform.position, aim.angle, aim.sight.position,_controller.transform.rotation,_isFacingRight);
       //skeletonAnimation.AnimationName = attackAnimation;
     }
