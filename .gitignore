@@ -41,3 +41,4 @@ Thumbs.db
 *.out
 *.toc
 _region_.tex
+Assets/game/actors/code/Player/Player.cs
