@@ -69,7 +69,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  lengthInSec: .879999995
+  lengthInSec: .5
   startDelay: 0
   speed: 1
   randomSeed: 0
@@ -277,7 +277,7 @@ ParticleSystem:
       minMaxState: 3
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 279
+    maxNumParticles: 10
   ShapeModule:
     serializedVersion: 2
     enabled: 0

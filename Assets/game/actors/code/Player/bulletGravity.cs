@@ -19,7 +19,7 @@ public class bulletGravity : MonoBehaviour {
 	protected virtual void OnCollisionEnter2D(Collision2D collision) {
 		Destroy (gameObject);
 		if (Spawn != null) {
-			Debug.Log ("spawn");
+			//Debug.Log ("spawn");
 			var contact0 = collision.contacts [0];
 			Instantiate (Spawn, contact0.point, transform.rotation);
 		}

@@ -18,6 +18,7 @@ public class Aim : MonoBehaviour {
 
 	void Start () {
 		angle = 0.0f;
+		degAngle = 180.0f * Mathf.Acos (Mathf.Cos (angle)) / Mathf.PI;
 	}
 
 	public void aiming (bool facingRight, Vector3 playerPosition){

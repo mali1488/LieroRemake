@@ -25,19 +25,26 @@ public class Player : MonoBehaviour {
 	private string nextWeaponPlayer1;
 	private string shootPlayer1;
 	private string jump1;
+	private string digPlayer1;
 
 	private string moveRightPlayer2;
 	private string moveLeftPlayer2;
 	private string aimUpPlayer2;
 	private string aimDownPlayer2;
 	private string shootPlayer2;
+	private string jump2;
+	private string digPlayer2;
 
 	//Weapon variables
 	public ArrayList weaponList = new ArrayList ();
 	public int currentWeapon = 0;
 	public ChangeWeapon changeWeapon;
 	private weapon weapon;
-	
+
+	//digging
+	private Digging dig;
+
+
 	public void Start() {	
 		_controller = GetComponent<CharacterController2D>();
     	_isFacingRight = transform.localScale.x > 0;
@@ -47,6 +54,8 @@ public class Player : MonoBehaviour {
 			weaponList.Add(i);
 		}
 		weapon = new weapon ();
+		dig = new Digging ();
+
 
 		// The real keybindings choosen from the main menu
 		/* 
@@ -58,12 +67,15 @@ public class Player : MonoBehaviour {
 		nextWeaponPlayer1 = PlayerPrefs.GetString ("prev");
 		shootPlayer1 = PlayerPrefs.GetString ("shoot");
 		jump1 = PlayerPrefs.GetString ("jump");
+		digPlayer1 = ;
 
 		moveRightPlayer2 = PlayerPrefs.GetString ("right2");
 		moveLeftPlayer2 = PlayerPrefs.GetString ("left2");
 		aimUpPlayer2 = PlayerPrefs.GetString ("up2");
 		aimDownPlayer2 = PlayerPrefs.GetString ("down2");
 		shootPlayer2 = PlayerPrefs.GetString ("shoot2");
+		jump2 = PlayerPrefs.GetString ("jump2");
+		digPlayer2 =;
 		*/
 
 		// Temporary keybindings for developing purposes
@@ -75,12 +87,16 @@ public class Player : MonoBehaviour {
 		nextWeaponPlayer1 = "1";
 		shootPlayer1 = "z";
 		jump1 = "space";
-		
+		digPlayer1 = "f";
+
 		moveRightPlayer2 = "right";
 		moveLeftPlayer2 = "left";
 		aimUpPlayer2 = "up";
 		aimDownPlayer2 = "down";
 		shootPlayer2 = "m";
+		jump2 = "right shift";
+		digPlayer2 = "n";
+
 	}
 
 
@@ -99,13 +115,13 @@ public class Player : MonoBehaviour {
 	private void HandleInput() {
 
     	if (Input.GetKey(moveRightPlayer1) && player1) {
-    		_normalizedHorizontalSpeed = 1;
+    		_normalizedHorizontalSpeed = 2;
 			if(!_isFacingRight) {
         		Flip();
 				aim.flipAim(_isFacingRight);
       		}
     	} else if (Input.GetKey(moveLeftPlayer1) && player1) {
-      		_normalizedHorizontalSpeed = -1;
+      		_normalizedHorizontalSpeed = -2;
       		if(_isFacingRight) {
         		Flip();	
 				aim.flipAim(_isFacingRight);
@@ -156,17 +172,23 @@ public class Player : MonoBehaviour {
 
 		if (Input.GetKeyDown (shootPlayer1) && player1 ) {
 			weapon.shoot(_controller.transform.position, aim.angle, aim.sight.position,_controller.transform.rotation,_isFacingRight);
+
+	
+		}
+
+		if (Input.GetKeyDown (digPlayer1) && player1 ) {
+			dig.Dig(_controller.transform.position, aim.angle, aim.sight.position, _controller.transform.rotation, _isFacingRight);
 		}
 
 		//player2 handeling
 		if (Input.GetKey(moveRightPlayer2) && player2) {
-			_normalizedHorizontalSpeedP2 = 1;
+			_normalizedHorizontalSpeedP2 = 2;
 			if(!_isFacingRight) {
 				Flip();
 				aim.flipAim(_isFacingRight);
 			}
 		} else if (Input.GetKey(moveLeftPlayer2) && player2) {
-			_normalizedHorizontalSpeedP2 = -1;
+			_normalizedHorizontalSpeedP2 = -2;
 			if(_isFacingRight) {
 				Flip();	
 				aim.flipAim(_isFacingRight);
@@ -190,6 +212,18 @@ public class Player : MonoBehaviour {
 			
 		if (Input.GetKeyUp (aimDownPlayer2) && player2) {
 			aim.down = false;
+		}
+
+		if (Input.GetKeyDown (shootPlayer2) && player2 ) {
+			weapon.shoot(_controller.transform.position, aim.angle, aim.sight.position,_controller.transform.rotation,_isFacingRight);
+		}
+
+		if (_controller.CanJump && Input.GetKeyDown(jump2) && player2) {
+			_controller.Jump();
+		}
+
+		if (Input.GetKeyDown (digPlayer2) && player2 ) {
+			dig.Dig(_controller.transform.position, aim.angle, aim.sight.position, _controller.transform.rotation, _isFacingRight);
 		}
 	}
 
