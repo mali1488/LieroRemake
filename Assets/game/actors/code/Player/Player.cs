@@ -38,6 +38,7 @@ public class Player : MonoBehaviour {
 
   //camera
   private Camera cam;
+  private Rect tempCam;
 
   //Spine animation
 
@@ -64,8 +65,11 @@ public class Player : MonoBehaviour {
 
   private SkeletonAnimation skeletonAnimation = null;
 
-  public void Setup(String moveLeft, String moveRight, String aimUp, String aimDown, String prevWeapon, String nextWeapon, String shoot, String jump, String digging, int positionX, int positionY) {
-    this.moveRight = moveRight;
+	public void Setup(String moveLeft, String moveRight, String aimUp, String aimDown, String prevWeapon, String nextWeapon, String shoot, String jump, String digging, int positionX, int positionY, float camX, float camY, float camWidth, float camHeight) {
+    
+		
+	cam = GetComponent<Camera> ();
+	this.moveRight = moveRight;
     this.moveLeft = moveLeft;
     this.aimUp = aimUp;
     this.aimDown = aimDown;
@@ -75,7 +79,13 @@ public class Player : MonoBehaviour {
     this.jump = jump;
 	this.digging = digging;
     transform.position = new Vector2(positionX, positionY);
-  }
+	tempCam.height = camHeight;
+	tempCam.width = camWidth;
+	tempCam.y = camY;
+	tempCam.x = camX;
+    GameObject tempChild = this.transform.GetChild (2).gameObject; 
+	tempChild.GetComponent<Camera> ().rect = tempCam;
+}
 
   public void Start() {
     // Get the SkeletonAnimation component for the GameObject this script is attached to.
@@ -92,7 +102,6 @@ public class Player : MonoBehaviour {
     }
     weapon = new weapon ();
 	dig = new Digging  ();
-	cam = GetComponent<Camera> ();
   }
 
   public void Update() {
