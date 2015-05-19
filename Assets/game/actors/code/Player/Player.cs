@@ -65,9 +65,8 @@ public class Player : MonoBehaviour {
 
   private SkeletonAnimation skeletonAnimation = null;
 
-	public void Setup(String moveLeft, String moveRight, String aimUp, String aimDown, String prevWeapon, String nextWeapon, String shoot, String jump, String digging, int positionX, int positionY, float camX, float camY, float camWidth, float camHeight) {
-    
-		
+  public void Setup(String moveLeft, String moveRight, String aimUp, String aimDown, String prevWeapon, String nextWeapon, String shoot, String jump, String digging, int positionX, int positionY, float camX, float camY, float camWidth, float camHeight) {
+    		
 	cam = GetComponent<Camera> ();
 	this.moveRight = moveRight;
     this.moveLeft = moveLeft;
