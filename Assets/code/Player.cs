@@ -26,6 +26,7 @@ public class Player : MonoBehaviour {
   private string nextWeapon = "e";
   private string shoot = "z";
   private string jump = "space";
+  private string digging = "";
 
   //Weapon variables
   public ArrayList weaponList = new ArrayList ();
@@ -57,7 +58,7 @@ public class Player : MonoBehaviour {
     this.nextWeapon = nextWeapon;
     this.shoot = shoot;
     this.jump = jump;
-        this.digging = digging;
+    this.digging = digging;
     transform.position = new Vector2(positionX, positionY);
         tempCam.height = camHeight;
         tempCam.width = camWidth;
@@ -143,7 +144,7 @@ public class Player : MonoBehaviour {
       aim.Down();
     }
 
-        if (Input.GetKeyDown (digging)) {
+        if (Input.GetKey(digging)) {
                 dig.Dig(_controller.transform.position, aim.angle, aim.sight.position, _controller.transform.rotation, _isFacingRight);
         }
 

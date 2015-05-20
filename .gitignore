@@ -42,3 +42,4 @@ Thumbs.db
 *.toc
 _region_.tex
 Assets/game/actors/code/Player/Player.cs
+Assets/Destructible2D*
