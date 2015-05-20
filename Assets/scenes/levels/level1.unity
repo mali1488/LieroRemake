@@ -87,82 +87,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!21 &185772752
-Material:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Sprites-Default (Destructible 2D)(Clone)
-  m_Shader: {fileID: 4800000, guid: 9c897ee6dc2bb7d40a4ad66067efa576, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: ca3e49bb2b77b0742967e79d70b1deff, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _AlphaTex
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _AlphaMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _AT
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats:
-      data:
-        first:
-          name: _Cutoff
-        second: .439999998
-      data:
-        first:
-          name: PixelSnap
-        second: 0
-      data:
-        first:
-          name: _Sharpness
-        second: 1
-      data:
-        first:
-          name: _AlphaThreshold
-        second: 0
-      data:
-        first:
-          name: _AlphaContrast
-        second: 1
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _AlphaScale
-        second: {r: 1, g: 1, b: 0, a: 0}
-      data:
-        first:
-          name: _AlphaOffset
-        second: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &188072745
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,8 +136,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 188072745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.8000002, y: 0, z: 9}
-  m_LocalScale: {x: 5.55226803, y: 5.5522666, z: 5.5522666}
+  m_LocalPosition: {x: 82.6999969, y: 45.4000015, z: 9}
+  m_LocalScale: {x: 6.75069952, y: 5.35397339, z: 5.5522666}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -245,7 +169,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 1107919259}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -268,7 +192,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 523691088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.7000008, y: -32.7000008, z: 0}
+  m_LocalPosition: {x: 49.2000008, y: 15.6999998, z: 0}
   m_LocalScale: {x: 40, y: 5, z: 1}
   m_Children:
   - {fileID: 1923184126}
@@ -1973,7 +1897,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 185772752}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1996,88 +1920,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1081263638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.9297256, y: -36.3258095, z: 0}
+  m_LocalPosition: {x: 123.900002, y: 12, z: 0}
   m_LocalScale: {x: 10, y: 5, z: 1}
   m_Children:
   - {fileID: 1585567028}
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!21 &1107919259
-Material:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Sprites-Default (Destructible 2D)(Clone)
-  m_Shader: {fileID: 4800000, guid: 9c897ee6dc2bb7d40a4ad66067efa576, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: ca3e49bb2b77b0742967e79d70b1deff, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _AlphaTex
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _AlphaMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _AT
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats:
-      data:
-        first:
-          name: _Cutoff
-        second: .439999998
-      data:
-        first:
-          name: PixelSnap
-        second: 0
-      data:
-        first:
-          name: _Sharpness
-        second: 1
-      data:
-        first:
-          name: _AlphaThreshold
-        second: 0
-      data:
-        first:
-          name: _AlphaContrast
-        second: 1
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _AlphaScale
-        second: {r: 1, g: 1, b: 0, a: 0}
-      data:
-        first:
-          name: _AlphaOffset
-        second: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1327899456
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,7 +1948,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1327899456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.1157036, y: -20.7922039, z: 0}
+  m_LocalPosition: {x: 99, y: 27.6000004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2184,7 +2032,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1522991686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -50}
+  m_LocalPosition: {x: 85.1999969, y: 45.5, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3340,48 +3188,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1081263641}
   m_RootOrder: 0
---- !u!1001 &1593318972
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 1.10000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 5.69999981
-      objectReference: {fileID: 0}
-    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1614743937
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,7 +3226,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 1805482791}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3443,88 +3249,54 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1614743937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -49.7999992, y: -37.5999985, z: -5.30000019}
+  m_LocalPosition: {x: 20.1000004, y: 10.8000002, z: -5.30000019}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1070672034}
   m_Father: {fileID: 0}
   m_RootOrder: 5
---- !u!21 &1805482791
-Material:
-  serializedVersion: 5
+--- !u!1001 &1685833839
+Prefab:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Sprites-Default (Destructible 2D)(Clone)
-  m_Shader: {fileID: 4800000, guid: 9c897ee6dc2bb7d40a4ad66067efa576, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 67d5831f764b04d8da5a2d108c2a0166, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _AlphaTex
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _AlphaMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _AT
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats:
-      data:
-        first:
-          name: _Cutoff
-        second: .439999998
-      data:
-        first:
-          name: PixelSnap
-        second: 0
-      data:
-        first:
-          name: _Sharpness
-        second: 1
-      data:
-        first:
-          name: _AlphaThreshold
-        second: 0
-      data:
-        first:
-          name: _AlphaContrast
-        second: 1
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _AlphaScale
-        second: {r: 1, g: 1, b: 0, a: 0}
-      data:
-        first:
-          name: _AlphaOffset
-        second: {r: 0, g: 0, b: 0, a: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -45.836338
+      objectReference: {fileID: 0}
+    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -19.8000011
+      objectReference: {fileID: 0}
+    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 470580, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b1869d1b10ef141cba16d38205d980cf, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1923184112
 GameObject:
   m_ObjectHideFlags: 0
