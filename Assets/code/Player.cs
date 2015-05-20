@@ -33,13 +33,23 @@ public class Player : MonoBehaviour {
   public ChangeWeapon changeWeapon;
   private Weapon weapon;
 
+
+  //digging
+  private Digging dig;
+
+  //camera
+  private Camera cam;
+  private Rect tempCam;
+
   //Spine animation
 
   private AnimPlayer animPlayer = null;
   private SkeletonAnimation skeletonAnimation = null;
 
-  public void Setup(String moveLeft, String moveRight, String aimUp, String aimDown, String prevWeapon, String nextWeapon, String shoot, String jump, int positionX, int positionY) {
-    this.moveRight = moveRight;
+  public void Setup(String moveLeft, String moveRight, String aimUp, String aimDown, String prevWeapon, String nextWeapon, String shoot, String jump, String digging, int positionX, int positionY, float camX, float camY, float camWidth, float camHeight) {
+
+        cam = GetComponent<Camera> ();
+        this.moveRight = moveRight;
     this.moveLeft = moveLeft;
     this.aimUp = aimUp;
     this.aimDown = aimDown;
@@ -47,8 +57,15 @@ public class Player : MonoBehaviour {
     this.nextWeapon = nextWeapon;
     this.shoot = shoot;
     this.jump = jump;
+        this.digging = digging;
     transform.position = new Vector2(positionX, positionY);
-  }
+        tempCam.height = camHeight;
+        tempCam.width = camWidth;
+        tempCam.y = camY;
+        tempCam.x = camX;
+    GameObject tempChild = this.transform.GetChild (2).gameObject;
+        tempChild.GetComponent<Camera> ().rect = tempCam;
+}
 
   public void Start() {
     _controller = GetComponent<CharacterController2D>();
@@ -65,6 +82,7 @@ public class Player : MonoBehaviour {
       aim.Setup(skeletonAnimation);
       weapon = GetComponent<Weapon>();
       weapon.Setup(skeletonAnimation);
+      dig = GetComponent<Digging>();
     }
 
     //Debug.Log("transform = " + _controller.transform);
@@ -124,6 +142,10 @@ public class Player : MonoBehaviour {
     if (Input.GetKey(aimDown)) {
       aim.Down();
     }
+
+        if (Input.GetKeyDown (digging)) {
+                dig.Dig(_controller.transform.position, aim.angle, aim.sight.position, _controller.transform.rotation, _isFacingRight);
+        }
 
     //Weaponchange input
     if (Input.GetKeyDown(prevWeapon)) {

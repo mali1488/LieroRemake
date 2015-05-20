@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CharacterController2D : MonoBehaviour
 {
-	private const float SkinWidth = .02f;
+	private const float SkinWidth = .08f;
 	private const int TotalHorizontalRays = 8;
 	private const int TotalVerticalRays = 4;
 
@@ -121,8 +121,8 @@ public class CharacterController2D : MonoBehaviour
 
 			MoveVertically(ref deltaMovement);
 
-			CorrectHorizontalPlacement(ref deltaMovement, true);
-			CorrectHorizontalPlacement(ref deltaMovement, false);
+			//CorrectHorizontalPlacement(ref deltaMovement, true);
+			//CorrectHorizontalPlacement(ref deltaMovement, false);
 		}
 
 		_transform.Translate(deltaMovement, Space.World);
@@ -161,17 +161,15 @@ public class CharacterController2D : MonoBehaviour
 
 	private void HandlePlatforms()
 	{
-		if (StandingOn != null)
-		{
-			var newGlobalPlatformPoint = StandingOn.transform.TransformPoint(_activeLocalPlatformPoint);
+		if (StandingOn != null) {
+			var newGlobalPlatformPoint = StandingOn.transform.TransformPoint (_activeLocalPlatformPoint);
 			var moveDistance = newGlobalPlatformPoint - _activeGlobalPlatformPoint;
 
 			if (moveDistance != Vector3.zero)
-				transform.Translate(moveDistance, Space.World);
+				transform.Translate (moveDistance, Space.World);
 
 			PlatformVelocity = (newGlobalPlatformPoint - _activeGlobalPlatformPoint) / Time.deltaTime;
-		}
-		else
+		} else 
 			PlatformVelocity = Vector3.zero;
 
 		StandingOn = null;
