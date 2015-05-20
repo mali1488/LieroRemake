@@ -30,10 +30,6 @@ public class AnimPlayer : MonoBehaviour {
 
   private SkeletonAnimation skeletonAnimation = null;
 
-  public void Start() {
-    //skeletonAnimation.skeleton.SetAttachment(gunSlot, thompsonAttachment);
-  }
-
   public void Setup(SkeletonAnimation skeletonAnimation) {
     this.skeletonAnimation = skeletonAnimation;
   }

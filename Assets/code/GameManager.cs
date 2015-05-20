@@ -28,11 +28,10 @@ public class GameManager : MonoBehaviour {
        aimDownPlayer2 = PlayerPrefs.GetString ("down2");
        shootPlayer2 = PlayerPrefs.GetString ("shoot2");
     */
-    GameObject player1 = Instantiate(spawnedObject);
-    player1.GetComponent<Player>().Setup("a", "d", "w", "s", "q", "e", "z", "space", "f", -140, 154, 0, 0, 0.5f, 1.0f);
-    GameObject player2 = Instantiate(spawnedObject);
-                player2.GetComponent<Player>().Setup("left", "right", "up", "down", "k", "l", "m", "n", "b", 153, 63, 0.5f, 0, 0.5f, 1.0f);
-
-    yield return null;
+     GameObject player1 = Instantiate(spawnedObject);
+     player1.GetComponent<Player>().Setup("a", "d", "w", "s", "q", "e", "z", "space", "f", -140, 154, 0, 0, 0.5f, 1.0f);
+     GameObject player2 = Instantiate(spawnedObject);
+     player2.GetComponent<Player>().Setup("left", "right", "up", "down", "k", "l", "m", "n", "b", 153, 63, 0.5f, 0, 0.5f, 1.0f);
+     yield return null;
   }
 }

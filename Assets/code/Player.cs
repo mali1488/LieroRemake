@@ -26,7 +26,7 @@ public class Player : MonoBehaviour {
   private string nextWeapon = "e";
   private string shoot = "z";
   private string jump = "space";
-  private string digging = "";
+  private string digging = "f";
 
   //Weapon variables
   public ArrayList weaponList = new ArrayList ();
