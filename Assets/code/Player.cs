@@ -64,26 +64,30 @@ public class Player : MonoBehaviour {
         tempCam.width = camWidth;
         tempCam.y = camY;
         tempCam.x = camX;
-    GameObject tempChild = this.transform.GetChild (2).gameObject;
+    GameObject tempChild = this.transform.GetChild (0).gameObject;
         tempChild.GetComponent<Camera> ().rect = tempCam;
 }
 
   public void Start() {
     _controller = GetComponent<CharacterController2D>();
+    dig = GetComponent<Digging>();
     _isFacingRight = transform.localScale.x > 0;
 
     skeletonAnimation = GetComponent<SkeletonAnimation>();
 
     if (skeletonAnimation) {
+      aim = GetComponent<Aim>();
+      if (aim) {
+        aim.Setup(skeletonAnimation);
+      }
+      weapon = GetComponent<Weapon>();
+      if (weapon) {
+        weapon.Setup(skeletonAnimation);
+      }
       animPlayer = GetComponent<AnimPlayer>();
       if (animPlayer) {
         animPlayer.Setup(skeletonAnimation);
       }
-      aim = GetComponent<Aim>();
-      aim.Setup(skeletonAnimation);
-      weapon = GetComponent<Weapon>();
-      weapon.Setup(skeletonAnimation);
-      dig = GetComponent<Digging>();
     }
 
     //Debug.Log("transform = " + _controller.transform);
