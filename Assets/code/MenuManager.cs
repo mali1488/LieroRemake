@@ -5,10 +5,13 @@ public class MenuManager : MonoBehaviour {
 
 	public Menu CurrentMenu;
 	public translation translationTool;
+	private Vector2 resolution;
 
 	public void Start() {
 		ShowMenu (CurrentMenu);
 		translationTool = new translation ();
+		resolution = new Vector2 (Screen.width, Screen.height);
+		Debug.Log (resolution);
 	}
 
 	public void ShowMenu(Menu menu) {

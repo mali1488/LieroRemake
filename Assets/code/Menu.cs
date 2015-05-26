@@ -5,6 +5,7 @@ public class Menu : MonoBehaviour {
 
 	private Animator _animator;
 	private CanvasGroup _canvasGroup;
+	public RectTransform rect_t;
 
 	public bool IsOpen {
 		get { return _animator.GetBool("IsOpen"); }
@@ -18,7 +19,9 @@ public class Menu : MonoBehaviour {
 
 		var rect = GetComponent<RectTransform> ();
 		//rect.offsetMax = rect.offsetMin = new Vector2 (0.0F,0.0F);
-		rect.transform.position = new Vector2 (0.0F,0.0F);
+		rect.transform.position = new Vector2 (200.0F,200.0F);
+		//rect_t.transform.position = new Vector2 (2000.0F,2000.0F);
+
 		//_animator.SetBool ("IsOpen",true);
 	}
 

@@ -9,6 +9,7 @@ public class mainMenuTranslate : MonoBehaviour {
 	public Text multiplayer;
 	public Text settings;
 	public Text quitGame;
+	public RectTransform rect;
 
 	public translation translate;
 

@@ -10,16 +10,11 @@ public class Player : MonoBehaviour {
   private CharacterController2D _controller;
   private float _normalizedHorizontalSpeed;
 
-  public float fireRate = 0.5F;
-  private float nextFire = 0.0F;
-  private bool isAimOnce = false;
-  private bool isIgnoreFirstShot = true;
-
-
   public float MaxSpeed = 8f;
   public float SpeedAccelerationOnGround = 10f;
   public float SpeedAccelerationInAir = 5f;
 
+  public bool justFlipped = false;
   private Aim aim = null;
 
   //Input variables player
@@ -34,7 +29,9 @@ public class Player : MonoBehaviour {
   private string digging = "f";
 
   //Weapon variables
-  private WeaponHolster weaponHolster;
+  public ArrayList weaponList = new ArrayList ();
+  public int currentWeapon = 0;
+  public ChangeWeapon changeWeapon;
   private Weapon weapon;
 
 
@@ -52,8 +49,8 @@ public class Player : MonoBehaviour {
 
   public void Setup(String moveLeft, String moveRight, String aimUp, String aimDown, String prevWeapon, String nextWeapon, String shoot, String jump, String digging, int positionX, int positionY, float camX, float camY, float camWidth, float camHeight) {
 
-    cam = GetComponent<Camera> ();
-    this.moveRight = moveRight;
+        cam = GetComponent<Camera> ();
+        this.moveRight = moveRight;
     this.moveLeft = moveLeft;
     this.aimUp = aimUp;
     this.aimDown = aimDown;
@@ -63,13 +60,13 @@ public class Player : MonoBehaviour {
     this.jump = jump;
     this.digging = digging;
     transform.position = new Vector2(positionX, positionY);
-    tempCam.height = camHeight;
-    tempCam.width = camWidth;
-    tempCam.y = camY;
-    tempCam.x = camX;
-    GameObject tempChild = this.transform.GetChild (1).gameObject;
-    tempChild.GetComponent<Camera> ().rect = tempCam;
-  }
+        tempCam.height = camHeight;
+        tempCam.width = camWidth;
+        tempCam.y = camY;
+        tempCam.x = camX;
+    GameObject tempChild = this.transform.GetChild (2).gameObject;
+        tempChild.GetComponent<Camera> ().rect = tempCam;
+}
 
   public void Start() {
     _controller = GetComponent<CharacterController2D>();
@@ -83,15 +80,20 @@ public class Player : MonoBehaviour {
       if (aim) {
         aim.Setup(skeletonAnimation);
       }
-      weaponHolster = GetComponent<WeaponHolster>();
-      if (weaponHolster) {
-        weaponHolster.Setup(skeletonAnimation);
-        weapon = weaponHolster.getCurrentWeapon();
+      weapon = GetComponent<Weapon>();
+      if (weapon) {
+        weapon.Setup(skeletonAnimation);
       }
       animPlayer = GetComponent<AnimPlayer>();
       if (animPlayer) {
         animPlayer.Setup(skeletonAnimation);
       }
+    }
+
+    //Debug.Log("transform = " + _controller.transform);
+    //aim.aiming(_isFacingRight, _controller.transform.position);
+    for (int i=0; i < 5; i++) {
+      weaponList.Add(i);
     }
   }
 
@@ -128,7 +130,7 @@ public class Player : MonoBehaviour {
       //IDLE
     } else {
       _normalizedHorizontalSpeed = 0;
-      if (_controller.State.IsGrounded && !Input.GetKey(shoot)) {
+      if (_controller.State.IsGrounded) {
         animPlayer.Idle();
       }
 
@@ -146,39 +148,53 @@ public class Player : MonoBehaviour {
       aim.Down();
     }
 
-    if (Input.GetKey(digging)) {
-      dig.Dig(_controller.transform.position, aim.angle, aim.sight.position, _controller.transform.rotation, _isFacingRight);
-    }
+        if (Input.GetKey(digging)) {
+                dig.Dig(_controller.transform.position, aim.angle, aim.sight.position, _controller.transform.rotation, _isFacingRight);
+        }
 
     //Weaponchange input
     if (Input.GetKeyDown(prevWeapon)) {
-      weapon = weaponHolster.prevWeapon();
+      if (currentWeapon == 0) {
+        currentWeapon = changeWeapon.weaponList.Count-1;
+      } else {
+        currentWeapon -= 1;
+      }
+      changeWeapon.swapWeapon(currentWeapon);
     }
 
     if (Input.GetKeyDown(nextWeapon)) {
-      weapon = weaponHolster.nextWeapon();
-    }
-
-    if (Input.GetKey (shoot) && Time.time > nextFire){
-      nextFire = Time.time + weapon.getFireRate();
-
-      if(!isIgnoreFirstShot) {
-        weapon.Shoot(boneFollower.transform.position, boneFollower.transform.eulerAngles,_isFacingRight);
-      }else{
-        isIgnoreFirstShot = false;
+      if (currentWeapon == changeWeapon.weaponList.Count-1) {
+        currentWeapon = 0;
+      } else {
+        currentWeapon += 1;
       }
-      animPlayer.Shoot();
+      changeWeapon.swapWeapon(currentWeapon);
     }
 
-    if (Input.GetKeyUp (shoot)) {
-      isAimOnce = false;
-      isIgnoreFirstShot = true;
+    if (Input.GetKeyDown (shoot) ){
+      weapon.Shoot(boneFollower.transform.position, boneFollower.transform.eulerAngles,_isFacingRight);
     }
   }
 
 
   private void Flip() {
+    justFlipped = true;
     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     _isFacingRight = transform.localScale.x > 0;
+
+    /*
+     aim.arrow.localScale = new Vector3(-aim.arrow.localScale.x, aim.arrow.localScale.y, aim.arrow.localScale.z);
+    if (aim.aimingBelow && !_isFacingRight) {
+      aim.arrow.rotation = Quaternion.AngleAxis (aim.degAngle, Vector3.forward);
+
+    } else  if (aim.aimingBelow && _isFacingRight) {
+      aim.arrow.rotation = Quaternion.AngleAxis (-aim.degAngle, Vector3.forward);
+
+    } else if (_isFacingRight) {
+      aim.arrow.rotation = Quaternion.AngleAxis (aim.degAngle, Vector3.forward);
+    } else {
+      aim.arrow.rotation = Quaternion.AngleAxis (-aim.degAngle, Vector3.forward);
+    }
+    */
   }
 }

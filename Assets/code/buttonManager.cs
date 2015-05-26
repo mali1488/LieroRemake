@@ -109,7 +109,11 @@ public class buttonManager : MonoBehaviour {
 
 		Debug.Log ("A: " + KeyCode.A);
 	}
-	
+
+	public void quit() {
+		Application.Quit ();
+	}
+
 	public void setControl(string button) {
 		Debug.Log ("set: " + button);
 		switch (button) {
