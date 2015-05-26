@@ -16,6 +16,7 @@ GameObject:
   - 61: {fileID: 6180380}
   - 50: {fileID: 5009868}
   - 114: {fileID: 11409150}
+  - 20: {fileID: 2010994}
   - 114: {fileID: 11420408}
   - 114: {fileID: 11486548}
   m_Layer: 0
@@ -41,24 +42,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &161014
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 468386}
-  - 20: {fileID: 2040718}
-  - 124: {fileID: 12446546}
-  - 92: {fileID: 9269666}
-  m_Layer: 0
-  m_Name: Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &415494
 Transform:
   m_ObjectHideFlags: 1
@@ -78,31 +61,18 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -140, y: 171, z: 0}
+  m_LocalPosition: {x: -43.0900002, y: -18.0599995, z: 0}
   m_LocalScale: {x: .150000006, y: .150000006, z: 1}
   m_Children:
   - {fileID: 415494}
-  - {fileID: 468386}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &468386
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161014}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 438036}
-  m_RootOrder: 1
---- !u!20 &2040718
+--- !u!20 &2010994
 Camera:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161014}
+  m_GameObject: {fileID: 123794}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
@@ -117,7 +87,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 50
+  orthographic size: 45
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -188,13 +158,6 @@ BoxCollider2D:
   m_Offset: {x: 2.60425663, y: 32.3000374}
   serializedVersion: 2
   m_Size: {x: 30.9785252, y: 64.5293655}
---- !u!92 &9269666
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161014}
-  m_Enabled: 1
 --- !u!114 &11409150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,13 +291,6 @@ MonoBehaviour:
   moveAnimation: run
   attackAnimation: attack
   jumpAnimation: jump
---- !u!124 &12446546
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161014}
-  m_Enabled: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
