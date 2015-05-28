@@ -6,6 +6,7 @@ public class BulletGravity : MonoBehaviour {
   public float SpawnCooldown = 1.0F;
 
   protected virtual void OnCollisionEnter2D(Collision2D collision) {
+	Debug.Log("collision");
     Destroy (gameObject);
     if (Spawn != null) {
       var contact0 = collision.contacts [0];

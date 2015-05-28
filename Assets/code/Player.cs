@@ -64,7 +64,7 @@ public class Player : MonoBehaviour {
         tempCam.width = camWidth;
         tempCam.y = camY;
         tempCam.x = camX;
-    GameObject tempChild = this.transform.GetChild (2).gameObject;
+    GameObject tempChild = this.transform.GetChild (1).gameObject;
         tempChild.GetComponent<Camera> ().rect = tempCam;
 }
 
