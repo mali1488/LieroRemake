@@ -53,6 +53,7 @@ GameObject:
   - 114: {fileID: 11422486}
   - 114: {fileID: 11405994}
   - 114: {fileID: 11446096}
+  - 114: {fileID: 11473440}
   m_Layer: 0
   m_Name: PlayerSpawn
   m_TagString: Untagged
@@ -184,7 +185,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 169834}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 2.60425663, y: 32.3000374}
   serializedVersion: 2
@@ -318,6 +319,24 @@ MonoBehaviour:
   timeScale: 1
   loop: 1
   _animationName: 
+--- !u!114 &11473440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7575022d1ce49f58e82199f9087063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Parameters:
+    MaxVelocity: {x: 3.40282347e+38, y: 3.40282347e+38}
+    SlopeLimit: 30
+    Gravity: -25
+    JumpRestrictions: 0
+    JumpFrequency: .25
+    JumpMagnitude: 12
 --- !u!114 &11475734
 MonoBehaviour:
   m_ObjectHideFlags: 1

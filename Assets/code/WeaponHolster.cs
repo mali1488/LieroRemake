@@ -50,10 +50,10 @@ public class WeaponHolster : MonoBehaviour {
 
   public void Setup(SkeletonAnimation skeletonAnimation) {
     this.skeletonAnimation = skeletonAnimation;
-    carbine = new Weapon();
-    flameGun = new Weapon();
-    mp40 = new Weapon();
-    thompson = new Weapon();
+    carbine = GetComponent<Weapon>();
+    flameGun = GetComponent<Weapon>();
+    mp40 = GetComponent<Weapon>();
+    thompson = GetComponent<Weapon>();
 
     carbine.Setup(carbineAttachment, 5f, 5000f, 0.35f, bulletPrefab);
     flameGun.Setup(flameGunAttachment, 5f, 5000f, 0.35f, bulletPrefab);
