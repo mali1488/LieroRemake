@@ -52,6 +52,7 @@ GameObject:
   - 114: {fileID: 11411130}
   - 114: {fileID: 11422486}
   - 114: {fileID: 11405994}
+  - 114: {fileID: 11446096}
   m_Layer: 0
   m_Name: PlayerSpawn
   m_TagString: Untagged
@@ -227,14 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906719e39eeeed148864a69768ff5835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 0}
-  sight: {fileID: 0}
-  angle: 0
-  up: 0
-  down: 0
-  aimingBelow: 0
-  degAngle: 0
-  player: {fileID: 11468826}
 --- !u!114 &11422486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -246,6 +239,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5fcade1f552a49198f0cdbd864bb821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 138106, guid: 5a420bd851b164743a549ded576254d4, type: 2}
+--- !u!114 &11446096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1991792d74e4394837105c3eacd3b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSlot: gun
+  bazookaAttachment: bazooka
+  carbineAttachment: carbine
+  colt45Attachment: colt45
+  flameGunAttachment: flamegun
+  mp40Attachment: mp40
+  potatoMasherAttachment: potatoMasher
+  rifleAttachment: rifle
+  thompsonAttachment: thompson
   bulletPrefab: {fileID: 138106, guid: 5a420bd851b164743a549ded576254d4, type: 2}
 --- !u!114 &11459806
 MonoBehaviour:
@@ -276,12 +290,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boneFollower: {fileID: 144192}
   _isFacingRight: 0
+  fireRate: .5
   MaxSpeed: 8
   SpeedAccelerationOnGround: 10
   SpeedAccelerationInAir: 5
-  justFlipped: 0
-  currentWeapon: 0
-  changeWeapon: {fileID: 0}
 --- !u!114 &11468996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,10 +333,6 @@ MonoBehaviour:
   moveAnimation: run
   attackAnimation: attack
   jumpAnimation: jump
-  gunSlot: gun
-  carbineAttachment: carbine
-  mp40Attachment: mp40
-  thompsonAttachment: thompson
 --- !u!124 &12460216
 Behaviour:
   m_ObjectHideFlags: 1

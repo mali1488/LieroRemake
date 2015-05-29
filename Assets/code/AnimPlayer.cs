@@ -16,18 +16,6 @@ public class AnimPlayer : MonoBehaviour {
   [SpineAnimation("jump")]
   public string jumpAnimation;
 
-  [SpineSlot]
-  public string gunSlot;
-
-  [SpineAttachment(currentSkinOnly: true, slotField: "gunSlot")]
-  public string carbineAttachment;
-
-  [SpineAttachment(currentSkinOnly: true, slotField: "gunSlot")]
-  public string mp40Attachment;
-
-  [SpineAttachment(currentSkinOnly: true, slotField: "gunSlot")]
-  public string thompsonAttachment;
-
   private SkeletonAnimation skeletonAnimation = null;
 
   public void Setup(SkeletonAnimation skeletonAnimation) {
@@ -45,4 +33,10 @@ public class AnimPlayer : MonoBehaviour {
   public void Jump() {
     this.skeletonAnimation.AnimationName = jumpAnimation;
   }
+
+  public void Shoot() {
+    this.skeletonAnimation.AnimationName = attackAnimation;
+  }
+
+
 }
