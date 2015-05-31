@@ -54,6 +54,7 @@ GameObject:
   - 114: {fileID: 11405994}
   - 114: {fileID: 11446096}
   - 114: {fileID: 11473440}
+  - 114: {fileID: 11441116}
   m_Layer: 0
   m_Name: PlayerSpawn
   m_TagString: Untagged
@@ -242,6 +243,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 138106, guid: 5a420bd851b164743a549ded576254d4, type: 2}
+--- !u!114 &11441116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de480a7680b7844fa98d899aa8e9e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSlot: gun
+  bazookaAttachment: bazooka
+  carbineAttachment: carbine
+  colt45Attachment: colt45
+  flameGunAttachment: flamegun
+  mp40Attachment: mp40
+  potatoMasherAttachment: potatoMasher
+  rifleAttachment: rifle
+  thompsonAttachment: thompson
+  bulletPrefab: {fileID: 138106, guid: 5a420bd851b164743a549ded576254d4, type: 2}
 --- !u!114 &11446096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,6 +318,10 @@ MonoBehaviour:
   MaxSpeed: 8
   SpeedAccelerationOnGround: 10
   SpeedAccelerationInAir: 5
+  manager: {fileID: 0}
+  MaxHealth: 100
+  Health: 0
+  BloodSplash: {fileID: 0}
 --- !u!114 &11468996
 MonoBehaviour:
   m_ObjectHideFlags: 1

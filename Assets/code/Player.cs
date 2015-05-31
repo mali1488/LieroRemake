@@ -15,10 +15,18 @@ public class Player : MonoBehaviour {
   private bool isAimOnce = false;
   private bool isIgnoreFirstShot = true;
 
+  private Vector2 transformBackUp;
 
   public float MaxSpeed = 8f;
   public float SpeedAccelerationOnGround = 10f;
   public float SpeedAccelerationInAir = 5f;
+
+  public GameManager manager;
+  public int MaxHealth = 100;
+  //public int Health {get; private set;}
+  public int Health;
+  public GameObject BloodSplash;      
+  public bool IsDead {get; private set;}
 
   private Aim aim = null;
 
@@ -63,6 +71,7 @@ public class Player : MonoBehaviour {
     this.jump = jump;
     this.digging = digging;
     transform.position = new Vector2(positionX, positionY);
+    transformBackUp = transform.position;
     tempCam.height = camHeight;
     tempCam.width = camWidth;
     tempCam.y = camY;
@@ -72,6 +81,7 @@ public class Player : MonoBehaviour {
   }
 
   public void Start() {
+    Health = MaxHealth;
     _controller = GetComponent<CharacterController2D>();
     dig = GetComponent<Digging>();
     _isFacingRight = transform.localScale.x > 0;
@@ -94,6 +104,12 @@ public class Player : MonoBehaviour {
       }
     }
   }
+
+  public void setGameManager(GameManager managerToUse)
+  {
+    manager = managerToUse;
+  }
+
 
   public void Update() {
     HandleInput();
@@ -179,4 +195,35 @@ public class Player : MonoBehaviour {
     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     _isFacingRight = transform.localScale.x > 0;
   }
+
+  public void Kill()
+  {
+    _controller.HandleCollisions = false;
+    GetComponent<Collider2D>().enabled = false;
+    IsDead = true;
+    Health = 0;
+    _controller.SetForce(new Vector2(0,10));
+  }
+
+  public void RespawnAt()
+  {
+    if(!_isFacingRight)
+      Flip();
+    IsDead = false;
+    GetComponent<Collider2D>().enabled = true;
+    _controller.HandleCollisions = true;
+   Health = MaxHealth;
+    transform.position = transformBackUp;
+  }
+
+  public void TakeDamage(int damage)                   
+  {
+   Debug.Log("Nu tog jag"+damage + " skada!");
+
+    Health -= damage;
+    if (Health <= 0)
+      manager.KillPlayer(this);
+    Debug.Log(Health + " liv kvar");
+  }
+  
 }
