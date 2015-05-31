@@ -3,6 +3,9 @@ using System.Collections;
 
 public class CharacterController2D : MonoBehaviour
 {
+
+  public ParticleSystem bloods;
+
   private const float SkinWidth = .08f;
   private const int TotalHorizontalRays = 8;
   private const int TotalVerticalRays = 4;
@@ -354,21 +357,36 @@ public class CharacterController2D : MonoBehaviour
 
   public void OnTriggerEnter2D(Collider2D other)
   {
+
+    //Debug.Log("CharacterController2D.OnTriggerEnter2D");
+
     if(other.gameObject.tag == "Bullet")
     {
-      Destroy(other.gameObject);
-      //add an explosion or something
-      //destroy the projectile that just caused the trigger collision
+      FireBloodParticles(other.gameObject.transform.position, other.gameObject.transform.position.x > gameObject.transform.position.x);
 
-      Debug.Log("CharacterController2D.OnTriggerEnter2D: Aj!");
+      Destroy(other.gameObject);
+
+      //Debug.Log("CharacterController2D.OnTriggerEnter2D: Aj!");
       // Destroy(gameObject);
     }
-
     var parameters = other.gameObject.GetComponent<ControllerPhysicsVolume2D>();
     if (parameters == null)
       return;
 
     _overrideParameters = parameters.Parameters;
+  }
+
+  private void FireBloodParticles(Vector3 bulletPos, bool hasBulletHitRight) {
+    Vector3 position = bulletPos + new Vector3(0,0,-0.1f);
+    ParticleSystem localBloodsObj = GameObject.Instantiate(bloods, position, bloods.transform.rotation) as ParticleSystem;
+
+    if(hasBulletHitRight) {
+      localBloodsObj.transform.rotation = Quaternion.Euler(0, 90, 0);
+    }else{
+      localBloodsObj.transform.rotation = Quaternion.Euler(0, 270, 0);
+    }
+
+    localBloodsObj.Play();
   }
 
   public void OnTriggerExit2D(Collider2D other)

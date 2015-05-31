@@ -185,7 +185,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 169834}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 2.60425663, y: 32.3000374}
   serializedVersion: 2
@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e17e5bfb05446ecb4ad310aec49892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloods: {fileID: 19857752, guid: 6be302f42c4da46799ad51ce4216adc1, type: 2}
   PlatformMask:
     serializedVersion: 2
     m_Bits: 256
