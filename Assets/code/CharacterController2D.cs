@@ -378,7 +378,7 @@ public class CharacterController2D : MonoBehaviour
 
   private void FireBloodParticles(Vector3 bulletPos) {
     Vector3 position = bulletPos + new Vector3(0,0,-0.1f);
-    bool hasBulletHitRight = bulletPos.x < gameObject.transform.position.x;
+    bool hasBulletHitRight = bulletPos.x > gameObject.transform.position.x;
     ParticleSystem localBloodsObj = GameObject.Instantiate(bloods, position, bloods.transform.rotation) as ParticleSystem;
 
     if(hasBulletHitRight) {
