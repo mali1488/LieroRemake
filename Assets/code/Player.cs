@@ -2,23 +2,40 @@
 using System.Collections;
 using Spine;
 using System;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class Player : MonoBehaviour {
+
+  public AudioClip audioShoot;
+  public AudioClip[] audioDie;
+
+  AudioSource audio;
+
+  public Image healthbar;
+  private float maxHealth = 100;
+  private float minHealth = 0;
+  private float curHealth;
+  private float healthSpeed;
+
 
   public GameObject boneFollower;
   public bool _isFacingRight;
   private CharacterController2D _controller;
   private float _normalizedHorizontalSpeed;
 
-  public float fireRate = 0.5F;
   private float nextFire = 0.0F;
   private bool isAimOnce = false;
   private bool isIgnoreFirstShot = true;
 
+  private Vector2 transformBackUp;
 
   public float MaxSpeed = 8f;
   public float SpeedAccelerationOnGround = 10f;
   public float SpeedAccelerationInAir = 5f;
+
+  private GameManager manager;
+  public bool IsDead {get; private set;}
 
   private Aim aim = null;
 
@@ -63,6 +80,7 @@ public class Player : MonoBehaviour {
     this.jump = jump;
     this.digging = digging;
     transform.position = new Vector2(positionX, positionY);
+    transformBackUp = transform.position;
     tempCam.height = camHeight;
     tempCam.width = camWidth;
     tempCam.y = camY;
@@ -76,6 +94,11 @@ public class Player : MonoBehaviour {
     dig = GetComponent<Digging>();
     _isFacingRight = transform.localScale.x > 0;
 
+    curHealth = maxHealth;
+    healthSpeed = 10f;
+
+    audio = GetComponent<AudioSource>();
+
     skeletonAnimation = GetComponent<SkeletonAnimation>();
 
     if (skeletonAnimation) {
@@ -87,6 +110,7 @@ public class Player : MonoBehaviour {
       if (weaponHolster) {
         weaponHolster.Setup(skeletonAnimation);
         weapon = weaponHolster.getCurrentWeapon();
+
       }
       animPlayer = GetComponent<AnimPlayer>();
       if (animPlayer) {
@@ -94,6 +118,12 @@ public class Player : MonoBehaviour {
       }
     }
   }
+
+  public void setGameManager(GameManager managerToUse)
+  {
+    manager = managerToUse;
+  }
+
 
   public void Update() {
     HandleInput();
@@ -159,12 +189,17 @@ public class Player : MonoBehaviour {
 
     if (Input.GetKey (shoot) && Time.time > nextFire){
       nextFire = Time.time + weapon.getFireRate();
+      Debug.Log("Nextfire" + weapon.getFireRate());
+
 
       if(!isIgnoreFirstShot) {
         weapon.Shoot(boneFollower.transform.position, boneFollower.transform.eulerAngles,_isFacingRight);
       }else{
         isIgnoreFirstShot = false;
       }
+
+      audio.PlayOneShot(audioShoot, 0.7F);
+
       animPlayer.Shoot();
     }
 
@@ -172,11 +207,59 @@ public class Player : MonoBehaviour {
       isAimOnce = false;
       isIgnoreFirstShot = true;
     }
+
+    if (Input.GetKeyDown ("u") && !IsDead) {
+      TakeDamage(10f);
+    }
+
   }
+  private void TakeDamage(float adj) {
+		curHealth = Mathf.Clamp (curHealth -= adj, 0, maxHealth);
+	
+		healthbar.fillAmount = curHealth / maxHealth;
 
+		if (curHealth > maxHealth / 2) {
+			healthbar.color = new Color32 ((byte)Map (curHealth, maxHealth / 2, maxHealth, 255, 0), 255, 0, 255);
+		} else {
+			healthbar.color = new Color32 (255, (byte)Map (curHealth, 0, maxHealth / 2, 0, 255), 0, 255);
+		}
+		if (curHealth <= 0.0)
+			manager.KillPlayer (this);
+		Debug.Log ("Nu har jag " + curHealth + " kvar");
+	}
+  
 
+  private float Map(float x, float inMin, float inMax, float outMin, float outMax) {
+    return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+	}
+	
   private void Flip() {
     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     _isFacingRight = transform.localScale.x > 0;
+  }
+
+  public void Kill()
+  {
+    _controller.HandleCollisions = false;
+    IsDead = true;
+    curHealth = 0f;
+    if (audio.isPlaying) return;
+    audio.clip = audioDie[UnityEngine.Random.Range(0,2)];
+    audio.Play();
+	animPlayer.FallBack();
+  }
+
+  public void RespawnAt()
+  {
+    if(!_isFacingRight)
+      Flip();
+    IsDead = false;
+    GetComponent<Collider2D>().enabled = true;
+    _controller.HandleCollisions = true;
+    curHealth = maxHealth;
+	healthbar.fillAmount = 1;
+	healthbar.color = new Color32 ((byte)Map (curHealth, maxHealth / 2, maxHealth, 255, 0), 255, 0, 255);
+	animPlayer.Idle();
+    transform.position = transformBackUp;
   }
 }
