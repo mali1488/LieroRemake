@@ -2,17 +2,8 @@
 using System.Collections;
 using Spine;
 using System;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
-
-
-  public Image healthbar;
-  public Image health;
-  private float maxHealth = 100;
-  private float minHealth = 0;
-  private float curHealth;
-  private float healthSpeed;
 
   public GameObject boneFollower;
   public bool _isFacingRight;
@@ -24,10 +15,18 @@ public class Player : MonoBehaviour {
   private bool isAimOnce = false;
   private bool isIgnoreFirstShot = true;
 
+  private Vector2 transformBackUp;
 
   public float MaxSpeed = 8f;
   public float SpeedAccelerationOnGround = 10f;
   public float SpeedAccelerationInAir = 5f;
+
+  public GameManager manager;
+  public int MaxHealth = 100;
+  //public int Health {get; private set;}
+  public int Health;
+  public GameObject BloodSplash;      
+  public bool IsDead {get; private set;}
 
   private Aim aim = null;
 
@@ -45,6 +44,7 @@ public class Player : MonoBehaviour {
   //Weapon variables
   private WeaponHolster weaponHolster;
   private Weapon weapon;
+
 
   //digging
   private Digging dig;
@@ -71,6 +71,7 @@ public class Player : MonoBehaviour {
     this.jump = jump;
     this.digging = digging;
     transform.position = new Vector2(positionX, positionY);
+    transformBackUp = transform.position;
     tempCam.height = camHeight;
     tempCam.width = camWidth;
     tempCam.y = camY;
@@ -80,12 +81,9 @@ public class Player : MonoBehaviour {
   }
 
   public void Start() {
+    Health = MaxHealth;
     _controller = GetComponent<CharacterController2D>();
     dig = GetComponent<Digging>();
-
-    curHealth = maxHealth;
-    healthSpeed = 10f;
-
     _isFacingRight = transform.localScale.x > 0;
 
     skeletonAnimation = GetComponent<SkeletonAnimation>();
@@ -105,8 +103,13 @@ public class Player : MonoBehaviour {
         animPlayer.Setup(skeletonAnimation);
       }
     }
-
   }
+
+  public void setGameManager(GameManager managerToUse)
+  {
+    manager = managerToUse;
+  }
+
 
   public void Update() {
     HandleInput();
@@ -178,37 +181,49 @@ public class Player : MonoBehaviour {
       }else{
         isIgnoreFirstShot = false;
       }
-      //animPlayer.Shoot();
+      animPlayer.Shoot();
     }
 
     if (Input.GetKeyUp (shoot)) {
       isAimOnce = false;
       isIgnoreFirstShot = true;
     }
-
-    if (Input.GetKeyDown ("u")) {
-      HandleHealthbar(-10f);
-    }
   }
 
-  private void HandleHealthbar(float adj) {
-    curHealth = Mathf.Clamp(curHealth += adj, 0, maxHealth);
-
-    health.fillAmount = Mathf.Lerp(health.fillAmount, curHealth / maxHealth, Time.deltaTime * healthSpeed);
-
-    if (curHealth > maxHealth/2) {
-      health.color = new Color32((byte)Map(curHealth, maxHealth/2, maxHealth, 255, 0), 255, 0, 255);
-    }else{
-      health.color = new Color32(255, (byte)Map(curHealth, 0, maxHealth / 2, 0, 255), 0, 255);
-    }
-  }
-
-  private float Map(float x, float inMin, float inMax, float outMin, float outMax) {
-    return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-  }
 
   private void Flip() {
     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     _isFacingRight = transform.localScale.x > 0;
   }
+
+  public void Kill()
+  {
+    _controller.HandleCollisions = false;
+    GetComponent<Collider2D>().enabled = false;
+    IsDead = true;
+    Health = 0;
+    _controller.SetForce(new Vector2(0,10));
+  }
+
+  public void RespawnAt()
+  {
+    if(!_isFacingRight)
+      Flip();
+    IsDead = false;
+    GetComponent<Collider2D>().enabled = true;
+    _controller.HandleCollisions = true;
+   Health = MaxHealth;
+    transform.position = transformBackUp;
+  }
+
+  public void TakeDamage(int damage)                   
+  {
+   Debug.Log("Nu tog jag"+damage + " skada!");
+
+    Health -= damage;
+    if (Health <= 0)
+      manager.KillPlayer(this);
+    Debug.Log(Health + " liv kvar");
+  }
+  
 }
