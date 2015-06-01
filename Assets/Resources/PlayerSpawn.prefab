@@ -54,6 +54,7 @@ GameObject:
   - 114: {fileID: 11405994}
   - 114: {fileID: 11446096}
   - 114: {fileID: 11473440}
+  - 114: {fileID: 11434834}
   m_Layer: 0
   m_Name: PlayerSpawn
   m_TagString: Untagged
@@ -242,6 +243,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 138106, guid: 5a420bd851b164743a549ded576254d4, type: 2}
+--- !u!114 &11434834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8a78cf4fad916e4baf4c1ff0c681fd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  digObject: {fileID: 5061746, guid: d9ff27ace4e71d1409fa415bbeae8f91, type: 2}
 --- !u!114 &11446096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,7 +263,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 169834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d1991792d74e4394837105c3eacd3b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 8736c462cc25a1643a10aa4de9debc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSlot: gun

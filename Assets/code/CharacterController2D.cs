@@ -362,7 +362,7 @@ public class CharacterController2D : MonoBehaviour
 
     if(other.gameObject.tag == "Bullet")
     {
-      FireBloodParticles(other.gameObject.transform.position, other.gameObject.transform.position.x > gameObject.transform.position.x);
+      FireBloodParticles(other.gameObject.transform.position);
 
       Destroy(other.gameObject);
 
@@ -376,9 +376,10 @@ public class CharacterController2D : MonoBehaviour
     _overrideParameters = parameters.Parameters;
   }
 
-  private void FireBloodParticles(Vector3 bulletPos, bool hasBulletHitRight) {
+  private void FireBloodParticles(Vector3 bulletPos) {
     Vector3 position = bulletPos + new Vector3(0,0,-0.1f);
-    ParticleSystem localBloodsObj = GameObject.Instantiate(bloods, position, bloods.transform.rotation) as ParticleSystem;
+	bool hasBulletHitRight = bulletPos.x > gameObject.transform.position.x;
+	ParticleSystem localBloodsObj = GameObject.Instantiate(bloods, position, bloods.transform.rotation) as ParticleSystem;
 
     if(hasBulletHitRight) {
       localBloodsObj.transform.rotation = Quaternion.Euler(0, 90, 0);

@@ -54,7 +54,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 138106}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -70,8 +70,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a387b98d5a5248b6af01efd6812c5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spawn: {fileID: 138106}
-  SpawnCooldown: 1
+  Spawn: {fileID: 121836, guid: 71b386227c44ec04b8317d5cd467ff62, type: 2}
+  damageToGive: 0
+  destroy: 0
+  SpawnCooldown: 1000
 --- !u!212 &21227712
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -94,7 +96,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1374012867
+  m_SortingLayerID: -1837952695
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 12dc98cffa56843538a67aafddbe605f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

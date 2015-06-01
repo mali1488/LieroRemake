@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
-
-
-  public GameObject spawnedObject;
-  //TODO: make game manager a singleton
-  void Start () {
-    StartCoroutine(spawn());
-  }
-
-  IEnumerator spawn() {
-    // The real keybindings choosen from the main menu
-    /*
+public class GameManagerTutorial : MonoBehaviour {
+	
+	
+	public GameObject spawnedObject;
+	//TODO: make game manager a singleton
+	void Start () {
+		StartCoroutine(spawn());
+	}
+	
+	IEnumerator spawn() {
+		// The real keybindings choosen from the main menu
+		/*
       moveRightPlayer1 = PlayerPrefs.GetString ("right");
       moveLeftPlayer1 = PlayerPrefs.GetString ("left");
       aimUpPlayer1 = PlayerPrefs.GetString ("up");
@@ -28,10 +28,10 @@ public class GameManager : MonoBehaviour {
       aimDownPlayer2 = PlayerPrefs.GetString ("down2");
       shootPlayer2 = PlayerPrefs.GetString ("shoot2");
     */
-    GameObject player1 = Instantiate(spawnedObject);
-    player1.GetComponent<Player>().Setup("a", "d", "w", "s", "q", "e", "z", "space", "f", -140, 160, 0, 0, 0.5f, 1.0f);
-    GameObject player2 = Instantiate(spawnedObject);
-    player2.GetComponent<Player>().Setup("left", "right", "up", "down", "k", "l", "m", "n", "b", 152, 63, 0.5f, 0, 0.5f, 1.0f);
-    yield return null;
-  }
+		GameObject player1 = Instantiate(spawnedObject);
+		player1.GetComponent<PlayerTutorial>().Setup("a", "d", "w", "s", "q", "e", "z", "space", "f", -140, 63, 0, 0, 0.5f, 1.0f, true);
+		GameObject player2 = Instantiate(spawnedObject);
+		player2.GetComponent<PlayerTutorial>().Setup("left", "right", "up", "down", "k", "l", "m", "n", "b", 152, 63, 0.5f, 0, 0.5f, 1.0f, false);
+		yield return null;
+	}
 }
