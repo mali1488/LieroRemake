@@ -16,6 +16,13 @@ public class AnimPlayer : MonoBehaviour {
   [SpineAnimation("jump")]
   public string jumpAnimation;
 
+  [SpineAnimation("fallBackwards")]
+  public string fallBackAnimation;
+
+  [SpineAnimation("fallForwards")]
+  public string fallForwardAnimation;
+
+
   private SkeletonAnimation skeletonAnimation = null;
 
   public void Setup(SkeletonAnimation skeletonAnimation) {
@@ -38,5 +45,11 @@ public class AnimPlayer : MonoBehaviour {
     this.skeletonAnimation.AnimationName = attackAnimation;
   }
 
+  public void FallBack() {
+    this.skeletonAnimation.AnimationName = fallBackAnimation;
+  }
 
+  public void FallForward() {
+    this.skeletonAnimation.AnimationName = fallForwardAnimation;
+  }
 }

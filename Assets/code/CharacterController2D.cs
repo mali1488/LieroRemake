@@ -358,7 +358,6 @@ public class CharacterController2D : MonoBehaviour
   public void OnTriggerEnter2D(Collider2D other)
   {
 
-    //Debug.Log("CharacterController2D.OnTriggerEnter2D");
 
     if(other.gameObject.tag == "Bullet")
     {
@@ -366,7 +365,6 @@ public class CharacterController2D : MonoBehaviour
 
       Destroy(other.gameObject);
 
-      //Debug.Log("CharacterController2D.OnTriggerEnter2D: Aj!");
       // Destroy(gameObject);
     }
     var parameters = other.gameObject.GetComponent<ControllerPhysicsVolume2D>();
