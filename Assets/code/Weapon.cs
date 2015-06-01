@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour {
 
   private SkeletonAnimation skeletonAnimation = null;
 
-  public void Setup(string weapon, float damage, float speed, float nextFire, GameObject bulletPrefab) {
+  public void Setup(string weapon, float damage, float speed, float fireRate, GameObject bulletPrefab) {
     this.weapon = weapon;
     this.damage = damage;
     this.speed = speed;
