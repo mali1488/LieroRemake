@@ -2,7 +2,10 @@
 # Unity generated #
 # =============== #
 Temp/
-Library/
+/Library/FailedAssetImports.txt
+/Library/cache/
+/Library/previews/
+/Library/ScriptAssemblies
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -18,6 +21,7 @@ obj/
 *.user
 *.unityproj
 *.booproj
+*.csproj
 
 # ============ #
 # OS generated #
@@ -41,5 +45,4 @@ Thumbs.db
 *.out
 *.toc
 _region_.tex
-Assets/game/actors/code/Player/Player.cs
-Assets/Destructible2D*
+Assets/external/Destructible2D*
