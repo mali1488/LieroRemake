@@ -34,8 +34,7 @@ public class AnimPlayer : MonoBehaviour {
   }
 
   public void Idle() {
-    //this.skeletonAnimation.AnimationName = idleAnimation;
-	skeletonAnimation.state.SetAnimation (0, idleAnimation, true);
+    this.skeletonAnimation.AnimationName = idleAnimation;
   }
 
   public void Jump() {
@@ -47,8 +46,7 @@ public class AnimPlayer : MonoBehaviour {
   }
 
   public void FallBack() {
-    //this.skeletonAnimation.AnimationName = fallBackAnimation;
-		skeletonAnimation.state.SetAnimation (0, fallBackAnimation, false);
+    this.skeletonAnimation.AnimationName = fallBackAnimation;
   }
 
   public void FallForward() {
