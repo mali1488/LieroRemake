@@ -2,8 +2,17 @@
 using System.Collections;
 using Spine;
 using System;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
+
+
+  public Image healthbar;
+  public Image health;
+  private float maxHealth = 100;
+  private float minHealth = 0;
+  private float curHealth;
+  private float healthSpeed;
 
   public GameObject boneFollower;
   public bool _isFacingRight;
@@ -36,7 +45,6 @@ public class Player : MonoBehaviour {
   //Weapon variables
   private WeaponHolster weaponHolster;
   private Weapon weapon;
-
 
   //digging
   private Digging dig;
@@ -74,6 +82,10 @@ public class Player : MonoBehaviour {
   public void Start() {
     _controller = GetComponent<CharacterController2D>();
     dig = GetComponent<Digging>();
+
+    curHealth = maxHealth;
+    healthSpeed = 10f;
+
     _isFacingRight = transform.localScale.x > 0;
 
     skeletonAnimation = GetComponent<SkeletonAnimation>();
@@ -93,6 +105,7 @@ public class Player : MonoBehaviour {
         animPlayer.Setup(skeletonAnimation);
       }
     }
+
   }
 
   public void Update() {
@@ -165,15 +178,34 @@ public class Player : MonoBehaviour {
       }else{
         isIgnoreFirstShot = false;
       }
-      animPlayer.Shoot();
+      //animPlayer.Shoot();
     }
 
     if (Input.GetKeyUp (shoot)) {
       isAimOnce = false;
       isIgnoreFirstShot = true;
     }
+
+    if (Input.GetKeyDown ("u")) {
+      HandleHealthbar(-10f);
+    }
   }
 
+  private void HandleHealthbar(float adj) {
+    curHealth = Mathf.Clamp(curHealth += adj, 0, maxHealth);
+
+    health.fillAmount = Mathf.Lerp(health.fillAmount, curHealth / maxHealth, Time.deltaTime * healthSpeed);
+
+    if (curHealth > maxHealth/2) {
+      health.color = new Color32((byte)Map(curHealth, maxHealth/2, maxHealth, 255, 0), 255, 0, 255);
+    }else{
+      health.color = new Color32(255, (byte)Map(curHealth, 0, maxHealth / 2, 0, 255), 0, 255);
+    }
+  }
+
+  private float Map(float x, float inMin, float inMax, float outMin, float outMax) {
+    return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+  }
 
   private void Flip() {
     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
