@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BulletGravity : MonoBehaviour {
   public GameObject Spawn;
-  public int damageToGive;
+  public float damageToGive;
 
   public float SpawnCooldown = 1.0F;
 
@@ -12,7 +12,7 @@ public class BulletGravity : MonoBehaviour {
     {
       Debug.Log(other.gameObject.name);
       other.gameObject.SendMessage("FireBloodParticles",gameObject.transform.position);
-      other.gameObject.SendMessage("TakeDamage",5f);
+      other.gameObject.SendMessage("TakeDamage",damageToGive);
       Destroy(gameObject);
     }
     else
