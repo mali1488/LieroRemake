@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
   //TODO: make game manager a singleton
   void Start () {
     StartCoroutine(spawn());
+    StartCoroutine(spawn());
   }
 
   IEnumerator spawn() {

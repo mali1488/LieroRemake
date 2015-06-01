@@ -62,7 +62,6 @@ GameObject:
   - 223: {fileID: 22350040}
   - 114: {fileID: 11400392}
   - 114: {fileID: 11498558}
-  - 114: {fileID: 11496196}
   m_Layer: 5
   m_Name: Healthbar
   m_TagString: Untagged
@@ -90,7 +89,8 @@ GameObject:
   - 114: {fileID: 11412422}
   - 114: {fileID: 11486830}
   - 114: {fileID: 11440912}
-  - 114: {fileID: 11427600}
+  - 114: {fileID: 11494378}
+  - 82: {fileID: 8247184}
   m_Layer: 0
   m_Name: PlayerSpawn
   m_TagString: Untagged
@@ -245,6 +245,75 @@ BoxCollider2D:
   m_Offset: {x: 2.60425663, y: 32.3000374}
   serializedVersion: 2
   m_Size: {x: 30.9785252, y: 64.5293655}
+--- !u!82 &8247184
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165826}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!92 &9231692
 Behaviour:
   m_ObjectHideFlags: 1
@@ -295,17 +364,6 @@ MonoBehaviour:
     JumpRestrictions: 0
     JumpFrequency: .25
     JumpMagnitude: 12
---- !u!114 &11427600
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 165826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11435314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -333,14 +391,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d632a3afe80ec43e4a73c9893273c042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthbar: {fileID: 11484274}
-  health: {fileID: 11454548}
+  audioShoot: {fileID: 8300000, guid: 5a09b7f61e4b5442a8e16171e82f8d8e, type: 3}
+  audioDie:
+  - {fileID: 8300000, guid: 76386c25e413241d49b2ab5050c41e21, type: 3}
+  - {fileID: 8300000, guid: 0e0d80a214fe84650b572b838eea82fc, type: 3}
+  - {fileID: 8300000, guid: 86fe67e019a5e4b7c81dd3b3abf25f46, type: 3}
+  healthbar: {fileID: 11454548}
   boneFollower: {fileID: 136376}
   _isFacingRight: 0
-  fireRate: .5
   MaxSpeed: 8
   SpeedAccelerationOnGround: 10
   SpeedAccelerationInAir: 5
+  MaxHealth: 100
+  Health: 0
 --- !u!114 &11440912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,6 +469,8 @@ MonoBehaviour:
   moveAnimation: run
   attackAnimation: attack
   jumpAnimation: jump
+  fallBackAnimation: fallBackwards
+  fallForwardAnimation: fallForwards
 --- !u!114 &11476752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -484,22 +549,18 @@ MonoBehaviour:
   rifleAttachment: rifle
   thompsonAttachment: thompson
   bulletPrefab: {fileID: 138106, guid: 5a420bd851b164743a549ded576254d4, type: 2}
---- !u!114 &11496196
+--- !u!114 &11494378
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 145340}
+  m_GameObject: {fileID: 165826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 966ad7105939a4ec4891cdf944d5a48a, type: 3}
+  m_Script: {fileID: 11500000, guid: c8a78cf4fad916e4baf4c1ff0c681fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  minHealth: 0
-  curHealth: 0
-  healthSpeed: 0
-  health: {fileID: 11454548}
+  digObject: {fileID: 5061746, guid: d9ff27ace4e71d1409fa415bbeae8f91, type: 2}
 --- !u!114 &11498558
 MonoBehaviour:
   m_ObjectHideFlags: 1

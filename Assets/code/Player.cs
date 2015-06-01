@@ -4,7 +4,13 @@ using Spine;
 using System;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class Player : MonoBehaviour {
+
+  public AudioClip audioShoot;
+  public AudioClip[] audioDie;
+
+  AudioSource audio;
 
   public Image healthbar;
   private float maxHealth = 100;
@@ -18,7 +24,6 @@ public class Player : MonoBehaviour {
   private CharacterController2D _controller;
   private float _normalizedHorizontalSpeed;
 
-  public float fireRate = 0.5F;
   private float nextFire = 0.0F;
   private bool isAimOnce = false;
   private bool isIgnoreFirstShot = true;
@@ -96,6 +101,7 @@ public class Player : MonoBehaviour {
     curHealth = maxHealth;
     healthSpeed = 10f;
 
+    audio = GetComponent<AudioSource>();
 
     skeletonAnimation = GetComponent<SkeletonAnimation>();
 
@@ -108,6 +114,7 @@ public class Player : MonoBehaviour {
       if (weaponHolster) {
         weaponHolster.Setup(skeletonAnimation);
         weapon = weaponHolster.getCurrentWeapon();
+
       }
       animPlayer = GetComponent<AnimPlayer>();
       if (animPlayer) {
@@ -186,12 +193,17 @@ public class Player : MonoBehaviour {
 
     if (Input.GetKey (shoot) && Time.time > nextFire){
       nextFire = Time.time + weapon.getFireRate();
+      Debug.Log("Nextfire" + weapon.getFireRate());
+
 
       if(!isIgnoreFirstShot) {
         weapon.Shoot(boneFollower.transform.position, boneFollower.transform.eulerAngles,_isFacingRight);
       }else{
         isIgnoreFirstShot = false;
       }
+
+      audio.PlayOneShot(audioShoot, 0.7F);
+
       animPlayer.Shoot();
     }
 
@@ -205,6 +217,8 @@ public class Player : MonoBehaviour {
     }
 
   }
+
+
 
   private void HandleHealthbar(float adj) {
     curHealth = Mathf.Clamp(curHealth += adj, 0, maxHealth);
@@ -234,6 +248,9 @@ public class Player : MonoBehaviour {
     IsDead = true;
     Health = 0;
     _controller.SetForce(new Vector2(0,10));
+    if (audio.isPlaying) return;
+    audio.clip = audioDie[UnityEngine.Random.Range(0,2)];
+    audio.Play();
   }
 
   public void RespawnAt()

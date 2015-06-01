@@ -55,10 +55,10 @@ public class WeaponHolster : MonoBehaviour {
     mp40 = GetComponent<Weapon>();
     thompson = GetComponent<Weapon>();
 
-    carbine.Setup(carbineAttachment, 5f, 5000f, 0.35f, bulletPrefab);
-    flameGun.Setup(flameGunAttachment, 5f, 5000f, 0.35f, bulletPrefab);
-    mp40.Setup(mp40Attachment, 5f, 5000f, 0.35f, bulletPrefab);
-    thompson.Setup(thompsonAttachment, 5f, 5000f, 0.35f, bulletPrefab);
+    carbine.Setup(carbineAttachment, 20f, 5000f, 0.15f, bulletPrefab);
+    flameGun.Setup(flameGunAttachment, 20f, 5000f, 0.15f, bulletPrefab);
+    mp40.Setup(mp40Attachment, 20f, 5000f, 0.15f, bulletPrefab);
+    thompson.Setup(thompsonAttachment, 20f, 5000f, 0.15f, bulletPrefab);
 
     weaponList.Add(carbine);
     weaponList.Add(flameGun);
