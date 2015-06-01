@@ -30,9 +30,6 @@ public class Player : MonoBehaviour {
   public float SpeedAccelerationInAir = 5f;
 
   private GameManager manager;
-  public int MaxHealth = 100;
-  //public int Health {get; private set;}
-  public int Health;
   public bool IsDead {get; private set;}
 
   private Aim aim = null;
@@ -88,7 +85,6 @@ public class Player : MonoBehaviour {
   }
 
   public void Start() {
-    Health = MaxHealth;
     _controller = GetComponent<CharacterController2D>();
     dig = GetComponent<Digging>();
     _isFacingRight = transform.localScale.x > 0;
@@ -200,28 +196,30 @@ public class Player : MonoBehaviour {
       isIgnoreFirstShot = true;
     }
 
-    if (Input.GetKeyDown ("u")) {
-      HandleHealthbar(-10f);
+    if (Input.GetKeyDown ("u") && !IsDead) {
+      TakeDamage(10f);
     }
 
   }
 
-  private void HandleHealthbar(float adj) {
-    curHealth = Mathf.Clamp(curHealth += adj, 0, maxHealth);
+  private void TakeDamage(float adj) {
+		curHealth = Mathf.Clamp (curHealth -= adj, 0, maxHealth);
+	
+		healthbar.fillAmount = curHealth / maxHealth;
 
-    healthbar.fillAmount = Mathf.Lerp(healthbar.fillAmount, curHealth / maxHealth, Time.deltaTime * healthSpeed);
-
-    if (curHealth > maxHealth/2) {
-      healthbar.color = new Color32((byte)Map(curHealth, maxHealth/2, maxHealth, 255, 0), 255, 0, 255);
-    }else{
-      healthbar.color = new Color32(255, (byte)Map(curHealth, 0, maxHealth / 2, 0, 255), 0, 255);
-    }
-  }
-
-  private float Map(float x, float inMin, float inMax, float outMin, float outMax) {
+		if (curHealth > maxHealth / 2) {
+			healthbar.color = new Color32 ((byte)Map (curHealth, maxHealth / 2, maxHealth, 255, 0), 255, 0, 255);
+		} else {
+			healthbar.color = new Color32 (255, (byte)Map (curHealth, 0, maxHealth / 2, 0, 255), 0, 255);
+		}
+		if (curHealth <= 0.0)
+			manager.KillPlayer (this);
+		Debug.Log ("Nu har jag " + curHealth + " kvar");
+	}
+ 	private float Map(float x, float inMin, float inMax, float outMin, float outMax) {
     return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-  }
-
+	}
+	
   private void Flip() {
     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     _isFacingRight = transform.localScale.x > 0;
@@ -232,7 +230,7 @@ public class Player : MonoBehaviour {
     _controller.HandleCollisions = false;
     GetComponent<Collider2D>().enabled = false;
     IsDead = true;
-    Health = 0;
+    curHealth = 0f;
     _controller.SetForce(new Vector2(0,10));
   }
 
@@ -243,18 +241,10 @@ public class Player : MonoBehaviour {
     IsDead = false;
     GetComponent<Collider2D>().enabled = true;
     _controller.HandleCollisions = true;
-    Health = MaxHealth;
+    curHealth = maxHealth;
+	healthbar.fillAmount = 1;
+	healthbar.color = new Color32 ((byte)Map (curHealth, maxHealth / 2, maxHealth, 255, 0), 255, 0, 255);
+	
     transform.position = transformBackUp;
   }
-
-  public void TakeDamage(int damage)
-  {
-    Debug.Log("Nu tog jag"+damage + " skada!");
-
-    Health -= damage;
-    if (Health <= 0)
-      manager.KillPlayer(this);
-    Debug.Log(Health + " liv kvar");
-  }
-
 }

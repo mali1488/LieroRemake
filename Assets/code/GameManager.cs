@@ -32,10 +32,10 @@ public class GameManager : MonoBehaviour {
     */
     player1 = Instantiate(spawnedObject);
     player1.SendMessage("setGameManager",this);
-    player1.GetComponent<Player>().Setup("a", "d", "w", "s", "q", "e", "z", "space", "f", -159, 178, 0, 0, 0.5f, 1.0f);
+    player1.GetComponent<Player>().Setup("a", "d", "w", "s", "q", "e", "z", "space", "f", -106, 152, 0, 0, 0.5f, 1.0f);
     player2 = Instantiate(spawnedObject);
     player2.SendMessage("setGameManager",this);
-    player2.GetComponent<Player>().Setup("left", "right", "up", "down", "k", "l", "m", "n", "b", 138, 74, 0.5f, 0, 0.5f, 1.0f);
+    player2.GetComponent<Player>().Setup("left", "right", "up", "down", "k", "l", "m", "n", "b", -31, 146, 0.5f, 0, 0.5f, 1.0f);
     yield return null;
   }
 
