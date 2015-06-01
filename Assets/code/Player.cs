@@ -241,13 +241,13 @@ public class Player : MonoBehaviour {
   public void Kill()
   {
     _controller.HandleCollisions = false;
+    animPlayer.FallBack ();
     IsDead = true;
     curHealth = 0f;
-    _controller.SetForce(new Vector2(0,10));
     if (audio.isPlaying) return;
     audio.clip = audioDie[UnityEngine.Random.Range(0,2)];
     audio.Play();
-	animPlayer.FallBack ();
+	 
   }
 
   public void RespawnAt()
