@@ -226,7 +226,7 @@ public class Player : MonoBehaviour {
 		if (curHealth <= 0.0)
 			manager.KillPlayer (this);
 		Debug.Log ("Nu har jag " + curHealth + " kvar");
-	}
+	
   }
 
   private float Map(float x, float inMin, float inMax, float outMin, float outMax) {
@@ -241,13 +241,13 @@ public class Player : MonoBehaviour {
   public void Kill()
   {
     _controller.HandleCollisions = false;
-    GetComponent<Collider2D>().enabled = false;
     IsDead = true;
     curHealth = 0f;
     _controller.SetForce(new Vector2(0,10));
     if (audio.isPlaying) return;
     audio.clip = audioDie[UnityEngine.Random.Range(0,2)];
     audio.Play();
+	animPlayer.FallBack ();
   }
 
   public void RespawnAt()
@@ -260,7 +260,7 @@ public class Player : MonoBehaviour {
     curHealth = maxHealth;
 	healthbar.fillAmount = 1;
 	healthbar.color = new Color32 ((byte)Map (curHealth, maxHealth / 2, maxHealth, 255, 0), 255, 0, 255);
-	
+	animPlayer.Idle ();
     transform.position = transformBackUp;
   }
 }

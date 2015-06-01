@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour {
   //TODO: make game manager a singleton
   void Start () {
     StartCoroutine(spawn());
-    StartCoroutine(spawn());
   }
 
   IEnumerator spawn() {
@@ -31,19 +30,12 @@ public class GameManager : MonoBehaviour {
       aimDownPlayer2 = PlayerPrefs.GetString ("down2");
       shootPlayer2 = PlayerPrefs.GetString ("shoot2");
     */
-<<<<<<< HEAD
-    GameObject player1 = Instantiate(spawnedObject);
-    player1.GetComponent<Player>().Setup("a", "d", "w", "s", "q", "e", "z", "space", "f", -140, 160, 0, 0, 0.5f, 1.0f);
-    GameObject player2 = Instantiate(spawnedObject);
-    player2.GetComponent<Player>().Setup("left", "right", "up", "down", "k", "l", "m", "n", "b", 152, 63, 0.5f, 0, 0.5f, 1.0f);
-=======
     player1 = Instantiate(spawnedObject);
     player1.SendMessage("setGameManager",this);
-    player1.GetComponent<Player>().Setup("a", "d", "w", "s", "q", "e", "z", "space", "f", -106, 152, 0, 0, 0.5f, 1.0f);
+    player1.GetComponent<Player>().Setup("a", "d", "w", "s", "q", "e", "z", "space", "f", -106, 156, 0, 0, 0.5f, 1.0f);
     player2 = Instantiate(spawnedObject);
     player2.SendMessage("setGameManager",this);
-    player2.GetComponent<Player>().Setup("left", "right", "up", "down", "k", "l", "m", "n", "b", -31, 146, 0.5f, 0, 0.5f, 1.0f);
->>>>>>> origin/master
+		player2.GetComponent<Player> ().Setup ("left", "right", "up", "down", "k", "l", "m", "n", "b", -120, 156, 0.5f, 0, 0.5f, 1.0f);
     yield return null;
   }
 

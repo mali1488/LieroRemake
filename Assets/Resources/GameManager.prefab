@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 470580}
   - 114: {fileID: 11447736}
+  - 81: {fileID: 8189718}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -28,6 +29,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!81 &8189718
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125714}
+  m_Enabled: 1
 --- !u!114 &11447736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -39,11 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff70f3209905497cb7c440c5dd1e94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  spawnedObject: {fileID: 169834, guid: f4ff23a758793714a9d50ab5f28bbe41, type: 2}
-=======
-  spawnedObject: {fileID: 165826, guid: b29683e6082224debaebd970f0853093, type: 2}
->>>>>>> origin/master
+  spawnedObject: {fileID: 165826, guid: 79dd49761648bb14eaf179e48ab05158, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

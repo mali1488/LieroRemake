@@ -76,22 +76,6 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-<<<<<<< HEAD
-  - 4: {fileID: 491886}
-  - 33: {fileID: 3365402}
-  - 23: {fileID: 2335076}
-  - 114: {fileID: 11468996}
-  - 114: {fileID: 11475734}
-  - 114: {fileID: 11468826}
-  - 61: {fileID: 6176154}
-  - 50: {fileID: 5080736}
-  - 114: {fileID: 11411130}
-  - 114: {fileID: 11422486}
-  - 114: {fileID: 11405994}
-  - 114: {fileID: 11446096}
-  - 114: {fileID: 11473440}
-  - 114: {fileID: 11434834}
-=======
   - 4: {fileID: 478196}
   - 33: {fileID: 3360194}
   - 23: {fileID: 2368280}
@@ -107,7 +91,6 @@ GameObject:
   - 114: {fileID: 11440912}
   - 114: {fileID: 11494378}
   - 82: {fileID: 8247184}
->>>>>>> origin/master
   m_Layer: 0
   m_Name: PlayerSpawn
   m_TagString: Untagged
@@ -257,7 +240,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 165826}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 2.60425663, y: 32.3000374}
   serializedVersion: 2
@@ -408,22 +391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d632a3afe80ec43e4a73c9893273c042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  bulletPrefab: {fileID: 138106, guid: 5a420bd851b164743a549ded576254d4, type: 2}
---- !u!114 &11434834
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8a78cf4fad916e4baf4c1ff0c681fd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  digObject: {fileID: 5061746, guid: d9ff27ace4e71d1409fa415bbeae8f91, type: 2}
---- !u!114 &11446096
-=======
   audioShoot: {fileID: 8300000, guid: 5a09b7f61e4b5442a8e16171e82f8d8e, type: 3}
   audioDie:
   - {fileID: 8300000, guid: 76386c25e413241d49b2ab5050c41e21, type: 3}
@@ -435,10 +402,7 @@ MonoBehaviour:
   MaxSpeed: 8
   SpeedAccelerationOnGround: 10
   SpeedAccelerationInAir: 5
-  MaxHealth: 100
-  Health: 0
 --- !u!114 &11440912
->>>>>>> origin/master
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -446,11 +410,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 165826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: 8736c462cc25a1643a10aa4de9debc0a, type: 3}
-=======
   m_Script: {fileID: 11500000, guid: 5f7575022d1ce49f58e82199f9087063, type: 3}
->>>>>>> origin/master
   m_Name: 
   m_EditorClassIdentifier: 
   Parameters:
@@ -574,7 +534,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 165826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d1991792d74e4394837105c3eacd3b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 8736c462cc25a1643a10aa4de9debc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSlot: gun
@@ -598,7 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a78cf4fad916e4baf4c1ff0c681fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  digObject: {fileID: 5061746, guid: d9ff27ace4e71d1409fa415bbeae8f91, type: 2}
+  digObject: {fileID: 5022880, guid: d9ff27ace4e71d1409fa415bbeae8f91, type: 2}
 --- !u!114 &11498558
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -71,9 +71,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spawn: {fileID: 121836, guid: 71b386227c44ec04b8317d5cd467ff62, type: 2}
-  damageToGive: 0
   destroy: 0
   SpawnCooldown: 1000
+  damageToGive: 10
 --- !u!212 &21227712
 SpriteRenderer:
   m_ObjectHideFlags: 1

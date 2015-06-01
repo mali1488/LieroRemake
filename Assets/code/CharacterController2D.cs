@@ -355,42 +355,11 @@ public class CharacterController2D : MonoBehaviour
     return true;
   }
 
-  // public void OnTriggerEnter2D(Collider2D other)
-  // {
-
-  //   //Debug.Log("CharacterController2D.OnTriggerEnter2D");
-
-<<<<<<< HEAD
-    if(other.gameObject.tag == "Bullet")
-    {
-      FireBloodParticles(other.gameObject.transform.position);
-=======
-  //   if(other.gameObject.tag == "Bullet")
-  //   {
-  //     FireBloodParticles(other.gameObject.transform.position, other.gameObject.transform.position.x > gameObject.transform.position.x);
->>>>>>> origin/master
-
-  //     Destroy(other.gameObject);
-
-  //     //Debug.Log("CharacterController2D.OnTriggerEnter2D: Aj!");
-  //     // Destroy(gameObject);
-  //   }
-  //   var parameters = other.gameObject.GetComponent<ControllerPhysicsVolume2D>();
-  //   if (parameters == null)
-  //     return;
-
-  //   _overrideParameters = parameters.Parameters;
-  // }
 
   private void FireBloodParticles(Vector3 bulletPos) {
     Vector3 position = bulletPos + new Vector3(0,0,-0.1f);
-<<<<<<< HEAD
-	bool hasBulletHitRight = bulletPos.x > gameObject.transform.position.x;
-	ParticleSystem localBloodsObj = GameObject.Instantiate(bloods, position, bloods.transform.rotation) as ParticleSystem;
-=======
     bool hasBulletHitRight = bulletPos.x > gameObject.transform.position.x;
     ParticleSystem localBloodsObj = GameObject.Instantiate(bloods, position, bloods.transform.rotation) as ParticleSystem;
->>>>>>> origin/master
 
     if(hasBulletHitRight) {
       localBloodsObj.transform.rotation = Quaternion.Euler(0, 90, 0);
