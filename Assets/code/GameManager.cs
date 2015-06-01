@@ -1,14 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(Button))]
 public class GameManager : MonoBehaviour {
 
+  public Sprite speaker;
+  public Sprite mute;
+  public Button button;
+  public bool isMute = false;
 
   public GameObject spawnedObject;
   private GameObject player1;
   private GameObject player2;
   //TODO: make game manager a singleton
   void Start () {
+    button.image.overrideSprite = speaker;
+    button.onClick.AddListener(() => {
+        if(!Input.GetKey("space")){
+          Mute();
+        }
+      });
+
     StartCoroutine(spawn());
   }
 
@@ -35,8 +48,21 @@ public class GameManager : MonoBehaviour {
     player1.GetComponent<Player>().Setup("a", "d", "w", "s", "q", "e", "z", "space", "f", -106, 156, 0, 0, 0.5f, 1.0f);
     player2 = Instantiate(spawnedObject);
     player2.SendMessage("setGameManager",this);
-		player2.GetComponent<Player> ().Setup ("left", "right", "up", "down", "k", "l", "m", "n", "b", -120, 156, 0.5f, 0, 0.5f, 1.0f);
+    player2.GetComponent<Player> ().Setup ("left", "right", "up", "down", "k", "l", "m", "n", "b", -120, 156, 0.5f, 0, 0.5f, 1.0f);
     yield return null;
+  }
+
+  public void Mute() {
+    isMute = !isMute;
+    if(isMute) {
+      button.image.overrideSprite = mute;
+      AudioListener.pause = true;
+      AudioListener.volume = 0;
+    }else{
+      button.image.overrideSprite = speaker;
+      AudioListener.pause = false;
+      AudioListener.volume = 1;
+    }
   }
 
   public void KillPlayer(Player player)
