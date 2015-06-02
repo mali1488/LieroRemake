@@ -5,17 +5,16 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class GameManager : MonoBehaviour {
 
-  public Sprite speaker;
   public Sprite mute;
-  public Button button;
+  [SerializeField]
+  private Button button = null;
   public bool isMute = false;
 
   public GameObject spawnedObject;
   private GameObject player1;
   private GameObject player2;
-  //TODO: make game manager a singleton
+
   void Start () {
-    button.image.overrideSprite = speaker;
     button.onClick.AddListener(() => {
         if(!Input.GetKey("space")){
           Mute();
@@ -59,7 +58,7 @@ public class GameManager : MonoBehaviour {
       AudioListener.pause = true;
       AudioListener.volume = 0;
     }else{
-      button.image.overrideSprite = speaker;
+      button.image.overrideSprite = null;
       AudioListener.pause = false;
       AudioListener.volume = 1;
     }
