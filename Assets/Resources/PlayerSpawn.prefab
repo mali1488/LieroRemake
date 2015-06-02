@@ -471,6 +471,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 86fe67e019a5e4b7c81dd3b3abf25f46, type: 3}
   healthbar: {fileID: 11454548}
   boneBarrel: {fileID: 121264}
+  boneBarrelBazooka: {fileID: 169106}
   boneCrosshair: {fileID: 136376}
   _isFacingRight: 0
   MaxSpeed: 8
