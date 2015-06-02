@@ -60,7 +60,12 @@ public class buttonManager : MonoBehaviour {
 
 	public void play() {
 		int level = PlayerPrefs.GetInt ("level");
+		Debug.Log ("loading level: " + level);
 		Application.LoadLevel ("level" + level);
+	}
+
+	public void playTutorial(){
+		Application.LoadLevel ("tutorialLevel");
 	}
 
 	private void bloodScrollBar() {
