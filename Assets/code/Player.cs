@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
 
 
   public GameObject boneBarrel;
+  public GameObject boneBarrelBazooka;
   public GameObject boneCrosshair;
   public bool _isFacingRight;
   private CharacterController2D _controller;
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour {
   //Weapon variables
   private WeaponHolster weaponHolster;
   private Weapon weapon;
+  private bool isBazooka = false;
 
 
   //digging
@@ -111,11 +113,12 @@ public class Player : MonoBehaviour {
       if (weaponHolster) {
         weaponHolster.Setup(skeletonAnimation);
         weapon = weaponHolster.getCurrentWeapon();
-
+        isBazooka = weapon.IsBazooka();
       }
       animPlayer = GetComponent<AnimPlayer>();
       if (animPlayer) {
         animPlayer.Setup(skeletonAnimation);
+        animPlayer.SetBazooka(isBazooka);
       }
     }
   }
@@ -183,16 +186,25 @@ public class Player : MonoBehaviour {
     //Weaponchange input
     if (Input.GetKeyDown(prevWeapon)) {
       weapon = weaponHolster.prevWeapon();
+      isBazooka = weapon.IsBazooka();
+      animPlayer.SetBazooka(isBazooka);
     }
 
     if (Input.GetKeyDown(nextWeapon)) {
       weapon = weaponHolster.nextWeapon();
+      isBazooka = weapon.IsBazooka();
+      animPlayer.SetBazooka(isBazooka);
     }
 
     if (Input.GetKey (shoot) && Time.time > nextFire){
       nextFire = Time.time + weapon.getFireRate();
 
-      weapon.Shoot(boneBarrel.transform.position, boneBarrel.transform.eulerAngles,_isFacingRight);
+      if(isBazooka) {
+        weapon.Shoot(boneBarrelBazooka.transform.position, boneBarrelBazooka.transform.eulerAngles,_isFacingRight);
+      }else{
+        weapon.Shoot(boneBarrel.transform.position, boneBarrel.transform.eulerAngles,_isFacingRight);
+      }
+
       animPlayer.Shoot();
 
       audio.PlayOneShot(audioShoot, 0.7F);
