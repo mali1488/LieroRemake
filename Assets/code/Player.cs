@@ -19,7 +19,8 @@ public class Player : MonoBehaviour {
   private float healthSpeed;
 
 
-  public GameObject boneFollower;
+  public GameObject boneBarrel;
+  public GameObject boneCrosshair;
   public bool _isFacingRight;
   private CharacterController2D _controller;
   private float _normalizedHorizontalSpeed;
@@ -175,7 +176,8 @@ public class Player : MonoBehaviour {
     }
 
     if (Input.GetKey(digging)) {
-      dig.Dig(_controller.transform.position, aim.GetAngle(), boneFollower.transform.position, _controller.transform.rotation, _isFacingRight);
+      dig.Dig(boneCrosshair.transform.position, boneCrosshair.transform.eulerAngles,_isFacingRight);
+      //dig.Dig(_controller.transform.position, boneBarrel.transform.rotation, boneBarrel.transform.position, _controller.transform.rotation, _isFacingRight);
     }
 
     //Weaponchange input
@@ -190,7 +192,7 @@ public class Player : MonoBehaviour {
     if (Input.GetKey (shoot) && Time.time > nextFire){
       nextFire = Time.time + weapon.getFireRate();
 
-      weapon.Shoot(boneFollower.transform.position, boneFollower.transform.eulerAngles,_isFacingRight);
+      weapon.Shoot(boneBarrel.transform.position, boneBarrel.transform.eulerAngles,_isFacingRight);
       animPlayer.Shoot();
 
       audio.PlayOneShot(audioShoot, 0.7F);

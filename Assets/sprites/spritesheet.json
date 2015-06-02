@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "bNrJcqReKPDATBLV7jt62L8s1cc", "spine": "2.1.27", "width": 3678.75, "height": 6452.86 },
+"skeleton": { "hash": "gNGqDsYiR5Mwip7Mqija0+/qf+A", "spine": "2.1.27", "width": 6175.47, "height": 6452.86 },
 "bones": [
 	{ "name": "root", "y": -8.99 },
 	{ "name": "hip", "parent": "root", "x": 5.43, "y": 3389.59 },
@@ -18,13 +18,13 @@
 	{ "name": "leftLowerArm", "parent": "leftUpperArm", "length": 992.5, "x": 1484.8, "y": 0.86, "rotation": 67.9 },
 	{ "name": "rightWeapon", "parent": "rightLowerArm", "length": 132.84, "x": 979.99, "y": 0.19, "rotation": 17.65 },
 	{ "name": "carbineBarrel", "parent": "rightWeapon", "length": 41.62, "x": 2280.46, "y": -39.75, "rotation": -4.78 },
-	{ "name": "flameBarrel", "parent": "rightWeapon", "length": 54.53, "x": 2005.18, "y": 85.5, "rotation": -4.78 },
+	{ "name": "flamegunBarrel", "parent": "rightWeapon", "length": 54.53, "x": 2005.18, "y": 85.5, "rotation": -4.78 },
 	{ "name": "mp4Barrel", "parent": "rightWeapon", "length": 45.81, "x": 2053.91, "y": 110.88, "rotation": -4.78 },
 	{ "name": "thompsonBarrel", "parent": "rightWeapon", "length": 68.49, "x": 1654.81, "y": 204.48, "rotation": -4.78 },
-	{ "name": "carbineAim", "parent": "carbineBarrel", "x": 2179.04, "y": -24.83 },
-	{ "name": "flameAim", "parent": "flameBarrel", "x": 2462.74, "y": -39.13 },
-	{ "name": "mp40Aim", "parent": "mp4Barrel", "x": 2414.92, "y": -25.24 },
-	{ "name": "thompsonAim", "parent": "thompsonBarrel", "x": 2817.67, "y": -19.41 }
+	{ "name": "carbineAim", "parent": "carbineBarrel", "x": 2179.36, "y": -11.67 },
+	{ "name": "flamegunAim", "parent": "flamegunBarrel", "x": 2463.98, "y": 13.5 },
+	{ "name": "mp40Aim", "parent": "mp4Barrel", "x": 2415.85, "y": 14.23 },
+	{ "name": "thompsonAim", "parent": "thompsonBarrel", "x": 2818.29, "y": 6.9 }
 ],
 "slots": [
 	{ "name": "rocket", "bone": "rightWeapon" },
@@ -39,12 +39,22 @@
 	{ "name": "rightFoot", "bone": "rightFoot", "attachment": "rightFoot" },
 	{ "name": "rightLowerLeg", "bone": "rightLowerLeg", "attachment": "rightLowerLeg" },
 	{ "name": "rightUpperLeg", "bone": "rightUpperLeg", "attachment": "rightUpperLeg" },
-	{ "name": "weapon", "bone": "rightWeapon", "attachment": "carbine" },
+	{ "name": "weapon", "bone": "rightWeapon", "attachment": "thompson" },
 	{ "name": "rightLowerArm", "bone": "rightLowerArm", "attachment": "rightLowerArm" },
-	{ "name": "rightUpperArm", "bone": "rightUpperArm", "attachment": "rightUpperArm" }
+	{ "name": "rightUpperArm", "bone": "rightUpperArm", "attachment": "rightUpperArm" },
+	{ "name": "flamegunCross", "bone": "flamegunAim", "attachment": "crosshair" },
+	{ "name": "carbineCross", "bone": "carbineAim", "attachment": "crosshair" },
+	{ "name": "mp40Cross", "bone": "mp40Aim", "attachment": "crosshair" },
+	{ "name": "thompsonCross", "bone": "thompsonAim", "attachment": "crosshair" }
 ],
 "skins": {
 	"default": {
+		"carbineCross": {
+			"crosshair": { "x": 6.68, "y": 4, "scaleX": 0.7, "scaleY": 0.7, "rotation": -1.35, "width": 1024, "height": 1024 }
+		},
+		"flamegunCross": {
+			"crosshair": { "x": 6.11, "y": 0.35, "scaleX": 0.7, "scaleY": 0.7, "rotation": 0.37, "width": 1024, "height": 1024 }
+		},
 		"flamepack": {
 			"flamepack": { "x": 1050.19, "y": 307.76, "rotation": -108.82, "width": 703, "height": 2102 }
 		},
@@ -66,6 +76,9 @@
 		"leftUpperLeg": {
 			"leftUpperLeg": { "x": 854.68, "y": 2.57, "rotation": 90, "width": 367, "height": 2082 }
 		},
+		"mp40Cross": {
+			"crosshair": { "x": -0.21, "y": -8.99, "scaleX": 0.7, "scaleY": 0.7, "rotation": 358.65, "width": 1024, "height": 1024 }
+		},
 		"rightFoot": {
 			"rightFoot": { "x": 102.88, "y": 1.94, "rotation": 90, "width": 367, "height": 573 }
 		},
@@ -83,6 +96,9 @@
 		},
 		"rocket": {
 			"rocket": { "x": 5159.9, "y": -110.48, "rotation": -7.78, "width": 2132, "height": 218 }
+		},
+		"thompsonCross": {
+			"crosshair": { "x": -0.21, "y": -8.99, "scaleX": 0.7, "scaleY": 0.7, "rotation": 358.65, "width": 1024, "height": 1024 }
 		},
 		"torso": {
 			"torso": { "x": 802.72, "y": -209.46, "rotation": -90.9, "width": 764, "height": 1977 }
@@ -968,7 +984,7 @@
 					{ "time": 2, "x": 1, "y": 1 }
 				]
 			},
-			"flameBarrel": {
+			"flamegunBarrel": {
 				"rotate": [
 					{ "time": 0, "angle": 0 }
 				],

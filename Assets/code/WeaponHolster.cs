@@ -23,23 +23,15 @@ public class WeaponHolster : MonoBehaviour {
 
   public void Setup(SkeletonAnimation skeletonAnimation) {
     this.skeletonAnimation = skeletonAnimation;
-    carbine = new Weapon("carbine", 20f, 5000f, 0.15f, bulletPrefab);
-    flameGun = new Weapon("flamegun", 20f, 5000f, 0.15f, bulletPrefab);
-    mp40 = new Weapon("thompson", 20f, 5000f, 0.15f, bulletPrefab);
-    thompson = new Weapon("mp40", 20f, 5000f, 0.15f, bulletPrefab);
+    carbine = new Weapon(skeletonAnimation, "carbine", 20f, 5000f, 0.15f, bulletPrefab);
+    flameGun = new Weapon(skeletonAnimation, "flamegun", 20f, 5000f, 0.15f, bulletPrefab);
+    mp40 = new Weapon(skeletonAnimation, "thompson", 20f, 5000f, 0.15f, bulletPrefab);
+    thompson = new Weapon(skeletonAnimation, "mp40", 20f, 5000f, 0.15f, bulletPrefab);
 
     weaponList.Add(carbine);
     weaponList.Add(flameGun);
     weaponList.Add(mp40);
     weaponList.Add(thompson);
-
-    Debug.Log("WeaponHolster.Setup: " + currentWeapon);
-
-    foreach(object o in weaponList)
-    {
-      Weapon weapon = (Weapon)o;
-      Debug.Log(weapon.getAttachment());
-    }
   }
   public Weapon nextWeapon() {
     if(weaponList.Count-1 == currentWeapon) {
@@ -62,7 +54,15 @@ public class WeaponHolster : MonoBehaviour {
   public Weapon getCurrentWeapon() {
     Weapon weapon = (Weapon)weaponList[currentWeapon];
     this.skeletonAnimation.skeleton.SetAttachment("weapon", weapon.getAttachment());
-    Debug.Log("WeaponHolster.getCurrentWeapon: " + weapon + ", " + currentWeapon );
+    foreach(object o in weaponList)
+    {
+      Weapon newWeapon = (Weapon)o;
+      if(weaponList[currentWeapon] == newWeapon) {
+        newWeapon.ShowCrossHair();
+      }else{
+        newWeapon.HideCrossHair();
+      }
+    }
 
     return weapon;
   }

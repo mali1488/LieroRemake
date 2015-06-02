@@ -45,7 +45,7 @@ GameObject:
   - 4: {fileID: 422492}
   - 114: {fileID: 11435314}
   m_Layer: 0
-  m_Name: BoneFollower
+  m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,6 +97,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &169106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 468600}
+  - 114: {fileID: 11425012}
+  m_Layer: 0
+  m_Name: Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &183136
 GameObject:
   m_ObjectHideFlags: 1
@@ -121,11 +137,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136376}
   m_LocalRotation: {x: 0, y: 0, z: -.0116932988, w: -.999931633}
-  m_LocalPosition: {x: 16.8203106, y: 39.6668243, z: 0}
+  m_LocalPosition: {x: 45.0607948, y: 39.5685196, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 478196}
-  m_RootOrder: 0
+  m_RootOrder: 3
 --- !u!4 &468358
 Transform:
   m_ObjectHideFlags: 1
@@ -138,6 +154,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 478196}
   m_RootOrder: 1
+--- !u!4 &468600
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169106}
+  m_LocalRotation: {x: 0, y: 0, z: -.0116932988, w: -.999931633}
+  m_LocalPosition: {x: 16.8203106, y: 39.6668243, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 478196}
+  m_RootOrder: 0
 --- !u!4 &478196
 Transform:
   m_ObjectHideFlags: 1
@@ -148,9 +176,10 @@ Transform:
   m_LocalPosition: {x: -134.300003, y: 159.300003, z: 0}
   m_LocalScale: {x: .150000006, y: .150000006, z: 1}
   m_Children:
-  - {fileID: 422492}
+  - {fileID: 468600}
   - {fileID: 468358}
   - {fileID: 22420730}
+  - {fileID: 422492}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!20 &2034728
@@ -363,6 +392,22 @@ MonoBehaviour:
     JumpRestrictions: 0
     JumpFrequency: .25
     JumpMagnitude: 12
+--- !u!114 &11425012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1fd8daaed7b64148a34acb96ba14ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonRenderer: {fileID: 11477408}
+  followZPosition: 1
+  followBoneRotation: 1
+  boneName: thompsonBarrel
+  resetOnAwake: 1
 --- !u!114 &11435314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -377,7 +422,7 @@ MonoBehaviour:
   skeletonRenderer: {fileID: 11477408}
   followZPosition: 1
   followBoneRotation: 1
-  boneName: thompsonBarrel
+  boneName: flamegunAim
   resetOnAwake: 1
 --- !u!114 &11438480
 MonoBehaviour:
@@ -396,7 +441,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0e0d80a214fe84650b572b838eea82fc, type: 3}
   - {fileID: 8300000, guid: 86fe67e019a5e4b7c81dd3b3abf25f46, type: 3}
   healthbar: {fileID: 11454548}
-  boneFollower: {fileID: 136376}
+  boneBarrel: {fileID: 169106}
+  boneCrosshair: {fileID: 136376}
   _isFacingRight: 0
   MaxSpeed: 8
   SpeedAccelerationOnGround: 10
@@ -581,7 +627,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingLayerID: -879311965
+  m_SortingLayerID: -1837952695
   m_SortingOrder: 0
 --- !u!224 &22413004
 RectTransform:
