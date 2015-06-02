@@ -85,7 +85,6 @@ GameObject:
   - 61: {fileID: 6102400}
   - 50: {fileID: 5032030}
   - 114: {fileID: 11442594}
-  - 114: {fileID: 11476752}
   - 114: {fileID: 11412422}
   - 114: {fileID: 11486830}
   - 114: {fileID: 11440912}
@@ -121,8 +120,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136376}
-  m_LocalRotation: {x: 0, y: 0, z: -.0260896552, w: -.999659598}
-  m_LocalPosition: {x: 17.1216927, y: 40.1868935, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -.0116932988, w: -.999931633}
+  m_LocalPosition: {x: 16.8203106, y: 39.6668243, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 478196}
@@ -146,7 +145,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -142.800003, y: 44.9000015, z: 0}
+  m_LocalPosition: {x: -134.300003, y: 159.300003, z: 0}
   m_LocalScale: {x: .150000006, y: .150000006, z: 1}
   m_Children:
   - {fileID: 422492}
@@ -242,9 +241,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 2.60425663, y: 32.3000374}
+  m_Offset: {x: -1.44337964, y: 32.3000069}
   serializedVersion: 2
-  m_Size: {x: 30.9785252, y: 64.5293655}
+  m_Size: {x: 18.6429234, y: 64.5293655}
 --- !u!82 &8247184
 AudioSource:
   m_ObjectHideFlags: 1
@@ -463,18 +462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee7d1b8aec1c490288c28830a57c4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11476752
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 165826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5fcade1f552a49198f0cdbd864bb821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 138106, guid: 5a420bd851b164743a549ded576254d4, type: 2}
 --- !u!114 &11477408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -531,15 +518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8736c462cc25a1643a10aa4de9debc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSlot: weapon
-  bazookaAttachment: bazooka
-  carbineAttachment: carbine
-  colt45Attachment: colt45
-  flameGunAttachment: flamegun
-  mp40Attachment: mp40
-  potatoMasherAttachment: potatoMasher
-  rifleAttachment: rifle
-  thompsonAttachment: thompson
   bulletPrefab: {fileID: 138106, guid: 5a420bd851b164743a549ded576254d4, type: 2}
 --- !u!114 &11494378
 MonoBehaviour:

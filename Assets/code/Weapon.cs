@@ -2,13 +2,13 @@
 using System.Collections;
 using Spine;
 
-public class Weapon : MonoBehaviour {
+public class Weapon {
 
-  private string weapon;
+  private string weaponAttachment;
   private float damage;
   private float speed;
   private float fireRate;
-  public GameObject bulletPrefab;
+  private GameObject bulletPrefab;
   private GameObject bullet;
 
   private Bone thompsonBarrel;
@@ -16,8 +16,8 @@ public class Weapon : MonoBehaviour {
 
   private SkeletonAnimation skeletonAnimation = null;
 
-  public void Setup(string weapon, float damage, float speed, float fireRate, GameObject bulletPrefab) {
-    this.weapon = weapon;
+  public Weapon(string weaponAttachment, float damage, float speed, float fireRate, GameObject bulletPrefab) {
+    this.weaponAttachment = weaponAttachment;
     this.damage = damage;
     this.speed = speed;
     this.fireRate = fireRate;
@@ -39,6 +39,7 @@ public class Weapon : MonoBehaviour {
   }
 
   public string getAttachment() {
-    return this.weapon;
+    Debug.Log("Weapon.getAttachment: " + weaponAttachment);
+    return this.weaponAttachment;
   }
 }
