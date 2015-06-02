@@ -463,12 +463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee7d1b8aec1c490288c28830a57c4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleAnimation: idle
-  moveAnimation: run
-  attackAnimation: attack
-  jumpAnimation: jump
-  fallBackAnimation: fallBackwards
-  fallForwardAnimation: fallForwards
 --- !u!114 &11476752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -537,7 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8736c462cc25a1643a10aa4de9debc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSlot: gun
+  weaponSlot: weapon
   bazookaAttachment: bazooka
   carbineAttachment: carbine
   colt45Attachment: colt45

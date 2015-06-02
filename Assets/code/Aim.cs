@@ -18,21 +18,6 @@ public class Aim : MonoBehaviour {
     return rightUpperArm.Rotation;
   }
 
-  public void Shoot() {
-    skeletonAnimation.UpdateLocal += delegate(SkeletonRenderer skeletonRenderer) {
-      const float lowerRotationBound = 95.0f;
-      const float upperArmRotationBound = 200.0f;
-      const float upperTorsoRotationBound = 125.0f;
-
-      Debug.Log("Aim.shoot()");
-      float tempArmRot = rightUpperArm.Rotation += 20;
-      float tempTorsoRot = torso.Rotation += 15;
-
-      rightUpperArm.Rotation = Mathf.Clamp(tempArmRot, lowerRotationBound, upperArmRotationBound);
-      torso.Rotation = Mathf.Clamp(tempTorsoRot, lowerRotationBound, upperTorsoRotationBound);
-    };
-  }
-
   public void Up() {
     skeletonAnimation.UpdateLocal += delegate(SkeletonRenderer skeletonRenderer) {
       const float lowerRotationBound = 95.0f;

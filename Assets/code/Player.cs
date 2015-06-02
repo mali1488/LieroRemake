@@ -189,18 +189,11 @@ public class Player : MonoBehaviour {
 
     if (Input.GetKey (shoot) && Time.time > nextFire){
       nextFire = Time.time + weapon.getFireRate();
-      Debug.Log("Nextfire" + weapon.getFireRate());
 
-
-      if(!isIgnoreFirstShot) {
-        weapon.Shoot(boneFollower.transform.position, boneFollower.transform.eulerAngles,_isFacingRight);
-      }else{
-        isIgnoreFirstShot = false;
-      }
+      weapon.Shoot(boneFollower.transform.position, boneFollower.transform.eulerAngles,_isFacingRight);
+      animPlayer.Shoot();
 
       audio.PlayOneShot(audioShoot, 0.7F);
-
-      animPlayer.Shoot();
     }
 
     if (Input.GetKeyUp (shoot)) {
@@ -214,25 +207,24 @@ public class Player : MonoBehaviour {
 
   }
   private void TakeDamage(float adj) {
-		curHealth = Mathf.Clamp (curHealth -= adj, 0, maxHealth);
-	
-		healthbar.fillAmount = curHealth / maxHealth;
+    curHealth = Mathf.Clamp (curHealth -= adj, 0, maxHealth);
 
-		if (curHealth > maxHealth / 2) {
-			healthbar.color = new Color32 ((byte)Map (curHealth, maxHealth / 2, maxHealth, 255, 0), 255, 0, 255);
-		} else {
-			healthbar.color = new Color32 (255, (byte)Map (curHealth, 0, maxHealth / 2, 0, 255), 0, 255);
-		}
-		if (curHealth <= 0.0)
-			manager.KillPlayer (this);
-		Debug.Log ("Nu har jag " + curHealth + " kvar");
-	
+    healthbar.fillAmount = curHealth / maxHealth;
+
+    if (curHealth > maxHealth / 2) {
+      healthbar.color = new Color32 ((byte)Map (curHealth, maxHealth / 2, maxHealth, 255, 0), 255, 0, 255);
+    } else {
+      healthbar.color = new Color32 (255, (byte)Map (curHealth, 0, maxHealth / 2, 0, 255), 0, 255);
+    }
+    if (curHealth <= 0.0 && !IsDead)
+      manager.KillPlayer (this);
+
   }
 
   private float Map(float x, float inMin, float inMax, float outMin, float outMax) {
     return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-	}
-	
+  }
+
   private void Flip() {
     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     _isFacingRight = transform.localScale.x > 0;
@@ -247,7 +239,7 @@ public class Player : MonoBehaviour {
     if (audio.isPlaying) return;
     audio.clip = audioDie[UnityEngine.Random.Range(0,2)];
     audio.Play();
-	 
+
   }
 
   public void RespawnAt()
@@ -258,9 +250,10 @@ public class Player : MonoBehaviour {
     GetComponent<Collider2D>().enabled = true;
     _controller.HandleCollisions = true;
     curHealth = maxHealth;
-	healthbar.fillAmount = 1;
-	healthbar.color = new Color32 ((byte)Map (curHealth, maxHealth / 2, maxHealth, 255, 0), 255, 0, 255);
-	animPlayer.Idle ();
+    healthbar.fillAmount = 1;
+    healthbar.color = new Color32 ((byte)Map (curHealth, maxHealth / 2, maxHealth, 255, 0), 255, 0, 255);
+    animPlayer.Idle ();
     transform.position = transformBackUp;
+    Debug.Log("Respawn: " + transform.position);
   }
 }

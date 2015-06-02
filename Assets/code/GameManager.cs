@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
   private GameObject player2;
 
   void Start () {
+    Mute();
     button.onClick.AddListener(() => {
         if(!Input.GetKey("space")){
           Mute();
