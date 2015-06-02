@@ -234,8 +234,8 @@ public class Player : MonoBehaviour {
 
   public void Kill()
   {
+    animPlayer.FallForward ();
     _controller.HandleCollisions = false;
-    animPlayer.FallBack ();
     IsDead = true;
     curHealth = 0f;
     if (audio.isPlaying) return;

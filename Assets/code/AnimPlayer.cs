@@ -28,7 +28,7 @@ public class AnimPlayer : MonoBehaviour {
   }
 
   public void FallBack() {
-    SetAnimation("fallBackwards", false);
+    SetAnimation("fallBackwards", true);
   }
 
   public void FallForward() {
