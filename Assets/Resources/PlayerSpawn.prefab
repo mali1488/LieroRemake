@@ -610,6 +610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 138106, guid: 5a420bd851b164743a549ded576254d4, type: 2}
+  rocketPrefab: {fileID: 157932, guid: 9d2c85c3bd1acd7459b2ae5760487705, type: 2}
 --- !u!114 &11494378
 MonoBehaviour:
   m_ObjectHideFlags: 1

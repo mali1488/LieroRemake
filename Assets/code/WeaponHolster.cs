@@ -20,6 +20,7 @@ public class WeaponHolster : MonoBehaviour {
   private ArrayList weaponList = new ArrayList();
 
   public GameObject bulletPrefab;
+  public GameObject rocketPrefab;
 
   public void Setup(SkeletonAnimation skeletonAnimation) {
     this.skeletonAnimation = skeletonAnimation;
@@ -27,7 +28,7 @@ public class WeaponHolster : MonoBehaviour {
     flameGun = new Weapon(skeletonAnimation, "flamegun", 20f, 5000f, 0.15f, bulletPrefab);
     mp40 = new Weapon(skeletonAnimation, "thompson", 20f, 5000f, 0.15f, bulletPrefab);
     thompson = new Weapon(skeletonAnimation, "mp40", 20f, 5000f, 0.15f, bulletPrefab);
-    bazooka = new Weapon(skeletonAnimation, "bazooka", 20f, 5000f, 0.15f, bulletPrefab);
+    bazooka = new Weapon(skeletonAnimation, "bazooka", 40f, 7000f, 1f, rocketPrefab);
 
     weaponList.Add(carbine);
     weaponList.Add(flameGun);

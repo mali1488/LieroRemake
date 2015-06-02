@@ -38,6 +38,7 @@ public class Player : MonoBehaviour {
 
   private GameManager manager;
   public bool IsDead {get; private set;}
+  private bool isHitByGrenade = false;
 
   private Aim aim = null;
 
@@ -264,5 +265,15 @@ public class Player : MonoBehaviour {
     animPlayer.Idle ();
     transform.position = transformBackUp;
     Debug.Log("Respawn: " + transform.position);
+  }
+
+  public void isHitByGrenadeSet(bool state)
+  {
+    isHitByGrenade = state;
+  }
+
+  public bool isHitByGrenadeGet()
+  {
+    return isHitByGrenade;
   }
 }
