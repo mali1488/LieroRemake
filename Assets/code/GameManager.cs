@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour {
   private GameObject player2;
 
   void Start () {
-    AudioListener.pause = false;
-    AudioListener.volume = 1;
+    /*AudioListener.pause = false;
+      AudioListener.volume = 1;*/
 
     button.onClick.AddListener(() => {
         if(!Input.GetKey("space")){
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
     player1.GetComponent<Player>().Setup("a", "d", "w", "s", "q", "e", "z", "space", "f", -106, 156, 0, 0, 0.5f, 1.0f);
     player2 = Instantiate(spawnedObject);
     player2.SendMessage("setGameManager",this);
-    player2.GetComponent<Player> ().Setup ("left", "right", "up", "down", "k", "l", "m", "n", "b", -120, 156, 0.5f, 0, 0.5f, 1.0f);
+    player2.GetComponent<Player> ().Setup ("left", "right", "up", "down", "k", "l", "m", "n", "b", 20, 156, 0.5f, 0, 0.5f, 1.0f);
     yield return null;
   }
 

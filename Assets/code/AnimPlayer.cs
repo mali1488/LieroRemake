@@ -40,7 +40,7 @@ public class AnimPlayer : MonoBehaviour {
     this.isBazooka = isBazooka;
   }
   void SetAnimation(string name, bool loop) {
-    if(isBazooka) {
+    if(isBazooka &&  !(name.Equals("fallForwards") || name.Equals("fallBackwards"))) {
       name += "Bazooka";
     }
     if(name == currentAnimation) {

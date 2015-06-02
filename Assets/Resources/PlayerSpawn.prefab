@@ -465,6 +465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioShoot: {fileID: 8300000, guid: 5a09b7f61e4b5442a8e16171e82f8d8e, type: 3}
+  audioShootBazooka: {fileID: 8300000, guid: af9adc36f46444f7b98eec0926e28268, type: 3}
   audioDie:
   - {fileID: 8300000, guid: 76386c25e413241d49b2ab5050c41e21, type: 3}
   - {fileID: 8300000, guid: 0e0d80a214fe84650b572b838eea82fc, type: 3}

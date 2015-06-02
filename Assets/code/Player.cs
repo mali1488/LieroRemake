@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
 
   public AudioClip audioShoot;
+  public AudioClip audioShootBazooka;
   public AudioClip[] audioDie;
 
   AudioSource audio;
@@ -161,7 +162,7 @@ public class Player : MonoBehaviour {
       //IDLE
     } else {
       _normalizedHorizontalSpeed = 0;
-      if (_controller.State.IsGrounded && !Input.GetKey(shoot)) {
+      if (_controller.State.IsGrounded && !Input.GetKey(shoot) && !IsDead) {
         animPlayer.Idle();
       }
 
@@ -202,13 +203,13 @@ public class Player : MonoBehaviour {
 
       if(isBazooka) {
         weapon.Shoot(boneBarrelBazooka.transform.position, boneBarrelBazooka.transform.eulerAngles,_isFacingRight);
+        audio.PlayOneShot(audioShootBazooka, 0.7F);
       }else{
+        audio.PlayOneShot(audioShoot, 0.7F);
         weapon.Shoot(boneBarrel.transform.position, boneBarrel.transform.eulerAngles,_isFacingRight);
       }
 
       animPlayer.Shoot();
-
-      audio.PlayOneShot(audioShoot, 0.7F);
     }
 
     if (Input.GetKeyUp (shoot)) {
@@ -242,9 +243,9 @@ public class Player : MonoBehaviour {
 
   public void Kill()
   {
-    animPlayer.FallForward ();
     _controller.HandleCollisions = false;
     IsDead = true;
+    animPlayer.FallForward ();
     curHealth = 0f;
     if (audio.isPlaying) return;
     audio.clip = audioDie[UnityEngine.Random.Range(0,2)];
