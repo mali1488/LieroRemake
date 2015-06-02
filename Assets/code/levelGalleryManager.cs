@@ -10,6 +10,7 @@ public class levelGalleryManager : MonoBehaviour
 
 	void Start () {
 		currentLevel = 0;
+		PlayerPrefs.SetInt ("level",currentLevel + 1);
 		currentImg.sprite = mySprites [currentLevel];
 	}
 
@@ -19,12 +20,13 @@ public class levelGalleryManager : MonoBehaviour
 		} else {
 			currentLevel++;
 		}
+		Debug.Log ("currentlevel: " + currentLevel);
 		currentImg.sprite = mySprites [currentLevel];
 		//PlayerPrefs.SetString ("level", "level" + currentLevel);
 	}
 
 	public void saveLevel() {
-		PlayerPrefs.SetInt ("level",currentLevel);
+		PlayerPrefs.SetInt ("level",currentLevel + 1);
 	}
 
 }
