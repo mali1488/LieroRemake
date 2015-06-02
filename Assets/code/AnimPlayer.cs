@@ -3,8 +3,7 @@ using System.Collections;
 using Spine;
 
 public class AnimPlayer : MonoBehaviour {
-  private string currentAnimation = "";
-  private bool isBazooka = false;
+  string currentAnimation = "";
 
   private SkeletonAnimation skeletonAnimation = null;
 
@@ -36,13 +35,7 @@ public class AnimPlayer : MonoBehaviour {
     SetAnimation("fallForwards", false);
   }
 
-  public void SetBazooka(bool isBazooka) {
-    this.isBazooka = isBazooka;
-  }
   void SetAnimation(string name, bool loop) {
-    if(isBazooka) {
-      name += "Bazooka";
-    }
     if(name == currentAnimation) {
       return;
     }

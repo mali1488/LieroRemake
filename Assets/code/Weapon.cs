@@ -10,7 +10,6 @@ public class Weapon {
   private float fireRate;
   private GameObject bulletPrefab;
   private GameObject bullet;
-  private bool isBazooka = false;
 
   private Bone muzzle;
   private string crossSlot;
@@ -59,7 +58,4 @@ public class Weapon {
     this.skeletonAnimation.skeleton.SetAttachment(crossSlot, "crosshair");
   }
 
-  public bool IsBazooka() {
-    return weaponAttachment.Equals("bazooka");
-  }
 }
