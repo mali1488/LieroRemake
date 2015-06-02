@@ -2,26 +2,29 @@
 using System.Collections;
 using Spine;
 
-public class Weapon : MonoBehaviour {
+public class Weapon {
 
-  private string weapon;
+  private string weaponAttachment;
   private float damage;
   private float speed;
   private float fireRate;
-  public GameObject bulletPrefab;
+  private GameObject bulletPrefab;
   private GameObject bullet;
 
-  private Bone thompsonBarrel;
-  private Bone thompsonAngle;
+  private Bone muzzle;
+  private string crossSlot;
 
   private SkeletonAnimation skeletonAnimation = null;
 
-  public void Setup(string weapon, float damage, float speed, float fireRate, GameObject bulletPrefab) {
-    this.weapon = weapon;
+  public Weapon(SkeletonAnimation skeletonAnimation, string weaponAttachment, float damage, float speed, float fireRate, GameObject bulletPrefab) {
+    this.skeletonAnimation = skeletonAnimation;
+    this.weaponAttachment = weaponAttachment;
     this.damage = damage;
     this.speed = speed;
     this.fireRate = fireRate;
     this.bulletPrefab = bulletPrefab;
+    SetCrossSlot();
+    HideCrossHair();
   }
 
   public void Shoot(Vector3 position, Vector3 rotation, bool isFacingRight) {
@@ -39,6 +42,20 @@ public class Weapon : MonoBehaviour {
   }
 
   public string getAttachment() {
-    return this.weapon;
+    Debug.Log("Weapon.getAttachment: " + weaponAttachment);
+    return this.weaponAttachment;
   }
+
+  public void SetCrossSlot() {
+    crossSlot = weaponAttachment + "Cross";
+  }
+
+  public void HideCrossHair() {
+    this.skeletonAnimation.skeleton.SetAttachment(crossSlot, null);
+  }
+
+  public void ShowCrossHair() {
+    this.skeletonAnimation.skeleton.SetAttachment(crossSlot, "crosshair");
+  }
+
 }

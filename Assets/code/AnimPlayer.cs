@@ -3,25 +3,7 @@ using System.Collections;
 using Spine;
 
 public class AnimPlayer : MonoBehaviour {
-
-  [SpineAnimation("idle")]
-  public string idleAnimation;
-
-  [SpineAnimation("run")]
-  public string moveAnimation;
-
-  [SpineAnimation("attack")]
-  public string attackAnimation;
-
-  [SpineAnimation("jump")]
-  public string jumpAnimation;
-
-  [SpineAnimation("fallBackwards")]
-  public string fallBackAnimation;
-
-  [SpineAnimation("fallForwards")]
-  public string fallForwardAnimation;
-
+  string currentAnimation = "";
 
   private SkeletonAnimation skeletonAnimation = null;
 
@@ -30,28 +12,35 @@ public class AnimPlayer : MonoBehaviour {
   }
 
   public void Move() {
-    this.skeletonAnimation.AnimationName = moveAnimation;
+    SetAnimation("run", true);
   }
 
   public void Idle() {
-    //this.skeletonAnimation.AnimationName = idleAnimation;
-	skeletonAnimation.state.SetAnimation (0, idleAnimation, true);
+    SetAnimation("idle", true);
   }
 
   public void Jump() {
-    this.skeletonAnimation.AnimationName = jumpAnimation;
+    SetAnimation("jump", true);
   }
 
   public void Shoot() {
-    this.skeletonAnimation.AnimationName = attackAnimation;
+    SetAnimation("attack", true);
   }
 
   public void FallBack() {
-    //this.skeletonAnimation.AnimationName = fallBackAnimation;
-	skeletonAnimation.state.SetAnimation (0, fallBackAnimation, false);
+    SetAnimation("fallBackwards", false);
   }
 
   public void FallForward() {
-    this.skeletonAnimation.AnimationName = fallForwardAnimation;
+    SetAnimation("fallForwards", false);
+  }
+
+  void SetAnimation(string name, bool loop) {
+    if(name == currentAnimation) {
+      return;
+    }
+
+    skeletonAnimation.state.SetAnimation(0, name, loop);
+    currentAnimation = name;
   }
 }

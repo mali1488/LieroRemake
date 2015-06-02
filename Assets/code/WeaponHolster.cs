@@ -6,33 +6,6 @@ public class WeaponHolster : MonoBehaviour {
 
   private SkeletonAnimation skeletonAnimation;
 
-  [SpineSlot]
-  public string weaponSlot;
-
-  [SpineAttachment(currentSkinOnly: true, slotField: "weaponSlot")]
-  public string bazookaAttachment;
-
-  [SpineAttachment(currentSkinOnly: true, slotField: "weaponSlot")]
-  public string carbineAttachment;
-
-  [SpineAttachment(currentSkinOnly: true, slotField: "weaponSlot")]
-  public string colt45Attachment;
-
-  [SpineAttachment(currentSkinOnly: true, slotField: "weaponSlot")]
-  public string flameGunAttachment;
-
-  [SpineAttachment(currentSkinOnly: true, slotField: "weaponSlot")]
-  public string mp40Attachment;
-
-  [SpineAttachment(currentSkinOnly: true, slotField: "weaponSlot")]
-  public string potatoMasherAttachment;
-
-  [SpineAttachment(currentSkinOnly: true, slotField: "weaponSlot")]
-  public string rifleAttachment;
-
-  [SpineAttachment(currentSkinOnly: true, slotField: "weaponSlot")]
-  public string thompsonAttachment;
-
   private Weapon bazooka;
   private Weapon carbine;
   private Weapon colt45;
@@ -50,21 +23,15 @@ public class WeaponHolster : MonoBehaviour {
 
   public void Setup(SkeletonAnimation skeletonAnimation) {
     this.skeletonAnimation = skeletonAnimation;
-    carbine = GetComponent<Weapon>();
-    flameGun = GetComponent<Weapon>();
-    mp40 = GetComponent<Weapon>();
-    thompson = GetComponent<Weapon>();
-
-    carbine.Setup(carbineAttachment, 20f, 5000f, 0.15f, bulletPrefab);
-    flameGun.Setup(flameGunAttachment, 20f, 5000f, 0.15f, bulletPrefab);
-    mp40.Setup(mp40Attachment, 20f, 5000f, 0.15f, bulletPrefab);
-    thompson.Setup(thompsonAttachment, 20f, 5000f, 0.15f, bulletPrefab);
+    carbine = new Weapon(skeletonAnimation, "carbine", 20f, 5000f, 0.15f, bulletPrefab);
+    flameGun = new Weapon(skeletonAnimation, "flamegun", 20f, 5000f, 0.15f, bulletPrefab);
+    mp40 = new Weapon(skeletonAnimation, "thompson", 20f, 5000f, 0.15f, bulletPrefab);
+    thompson = new Weapon(skeletonAnimation, "mp40", 20f, 5000f, 0.15f, bulletPrefab);
 
     weaponList.Add(carbine);
     weaponList.Add(flameGun);
     weaponList.Add(mp40);
     weaponList.Add(thompson);
-
   }
   public Weapon nextWeapon() {
     if(weaponList.Count-1 == currentWeapon) {
@@ -76,7 +43,7 @@ public class WeaponHolster : MonoBehaviour {
   }
 
   public Weapon prevWeapon() {
-    if(currentWeapon == 0) {
+    if(currentWeapon <= 0) {
       currentWeapon = weaponList.Count-1;
     }else{
       currentWeapon--;
@@ -85,10 +52,27 @@ public class WeaponHolster : MonoBehaviour {
   }
 
   public Weapon getCurrentWeapon() {
-    Debug.Log("WeaponHolster.getCurrentWeapon(): " + currentWeapon);
     Weapon weapon = (Weapon)weaponList[currentWeapon];
-    skeletonAnimation.skeleton.SetAttachment(weaponSlot, weapon.getAttachment());
+    this.skeletonAnimation.skeleton.SetAttachment("weapon", weapon.getAttachment());
+    foreach(object o in weaponList)
+    {
+      Weapon newWeapon = (Weapon)o;
+      if(weaponList[currentWeapon] == newWeapon) {
+        newWeapon.ShowCrossHair();
+      }else{
+        newWeapon.HideCrossHair();
+      }
+    }
+
     return weapon;
+  }
+
+  public void SetWeapon(int newWeapon) {
+    if(newWeapon == currentWeapon) {
+      return;
+    }
+
+    currentWeapon = newWeapon;
   }
 
 }

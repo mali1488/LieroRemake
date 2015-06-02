@@ -20,9 +20,16 @@ carbine
   index: -1
 colt45
   rotate: false
-  xy: 283, 49
+  xy: 336, 49
   size: 41, 26
   orig: 41, 26
+  offset: 0, 0
+  index: -1
+crosshair
+  rotate: false
+  xy: 283, 24
+  size: 51, 51
+  orig: 51, 51
   offset: 0, 0
   index: -1
 flamegun

@@ -34,7 +34,8 @@ obj/
 ehthumbs.db
 Thumbs.db
 /Assets/Destructible2D/
-Assets/Destructible2D.meta
+/Assets/Destructible2D.meta
+/Library/EditorUserSettings.asset
 # ============ #
 # Other        #
 # ============ #

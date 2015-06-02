@@ -34,7 +34,6 @@ GameObject:
   - 61: {fileID: 6164136}
   - 50: {fileID: 5054330}
   - 114: {fileID: 11458646}
-  - 114: {fileID: 11425914}
   - 114: {fileID: 11405928}
   - 114: {fileID: 11464000}
   - 114: {fileID: 11490088}
@@ -298,10 +297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee7d1b8aec1c490288c28830a57c4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleAnimation: idle
-  moveAnimation: run
-  attackAnimation: attack
-  jumpAnimation: jump
 --- !u!114 &11420134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,18 +325,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AllowActivationOnStandalone: 0
---- !u!114 &11425914
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5fcade1f552a49198f0cdbd864bb821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 138106, guid: 5a420bd851b164743a549ded576254d4, type: 2}
 --- !u!114 &11428318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -454,15 +437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8736c462cc25a1643a10aa4de9debc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSlot: gun
-  bazookaAttachment: bazooka
-  carbineAttachment: carbine
-  colt45Attachment: colt45
-  flameGunAttachment: flamegun
-  mp40Attachment: mp40
-  potatoMasherAttachment: potatoMasher
-  rifleAttachment: rifle
-  thompsonAttachment: thompson
   bulletPrefab: {fileID: 138106, guid: 5a420bd851b164743a549ded576254d4, type: 2}
 --- !u!114 &11474034
 MonoBehaviour:
