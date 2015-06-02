@@ -202,11 +202,6 @@ public class Player : MonoBehaviour {
       isAimOnce = false;
       isIgnoreFirstShot = true;
     }
-
-    if (Input.GetKeyDown ("u") && !IsDead) {
-      TakeDamage(10f);
-    }
-
   }
   private void TakeDamage(float adj) {
     curHealth = Mathf.Clamp (curHealth -= adj, 0, maxHealth);

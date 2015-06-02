@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "gNGqDsYiR5Mwip7Mqija0+/qf+A", "spine": "2.1.27", "width": 6175.47, "height": 6452.86 },
+"skeleton": { "hash": "1D+y2yNgZIBWe7NOgWiVQ1UuH6s", "spine": "2.1.27", "width": 7336.76, "height": 6452.86 },
 "bones": [
 	{ "name": "root", "y": -8.99 },
 	{ "name": "hip", "parent": "root", "x": 5.43, "y": 3389.59 },
@@ -17,10 +17,12 @@
 	{ "name": "rightLowerArm", "parent": "rightUpperArm", "length": 993.67, "x": 1485.9, "y": 0.78, "rotation": 110.76 },
 	{ "name": "leftLowerArm", "parent": "leftUpperArm", "length": 992.5, "x": 1484.8, "y": 0.86, "rotation": 67.9 },
 	{ "name": "rightWeapon", "parent": "rightLowerArm", "length": 132.84, "x": 979.99, "y": 0.19, "rotation": 17.65 },
+	{ "name": "bazookaBarrel", "parent": "rightWeapon", "length": 93.43, "x": 3192.34, "y": 1216.75, "rotation": -8.94 },
 	{ "name": "carbineBarrel", "parent": "rightWeapon", "length": 41.62, "x": 2280.46, "y": -39.75, "rotation": -4.78 },
 	{ "name": "flamegunBarrel", "parent": "rightWeapon", "length": 54.53, "x": 2005.18, "y": 85.5, "rotation": -4.78 },
 	{ "name": "mp4Barrel", "parent": "rightWeapon", "length": 45.81, "x": 2053.91, "y": 110.88, "rotation": -4.78 },
 	{ "name": "thompsonBarrel", "parent": "rightWeapon", "length": 68.49, "x": 1654.81, "y": 204.48, "rotation": -4.78 },
+	{ "name": "bazookaAim", "parent": "bazookaBarrel", "x": 2402.2, "y": 43.79 },
 	{ "name": "carbineAim", "parent": "carbineBarrel", "x": 2179.36, "y": -11.67 },
 	{ "name": "flamegunAim", "parent": "flamegunBarrel", "x": 2463.98, "y": 13.5 },
 	{ "name": "mp40Aim", "parent": "mp4Barrel", "x": 2415.85, "y": 14.23 },
@@ -39,16 +41,20 @@
 	{ "name": "rightFoot", "bone": "rightFoot", "attachment": "rightFoot" },
 	{ "name": "rightLowerLeg", "bone": "rightLowerLeg", "attachment": "rightLowerLeg" },
 	{ "name": "rightUpperLeg", "bone": "rightUpperLeg", "attachment": "rightUpperLeg" },
-	{ "name": "weapon", "bone": "rightWeapon", "attachment": "thompson" },
+	{ "name": "weapon", "bone": "rightWeapon", "attachment": "bazooka" },
 	{ "name": "rightLowerArm", "bone": "rightLowerArm", "attachment": "rightLowerArm" },
 	{ "name": "rightUpperArm", "bone": "rightUpperArm", "attachment": "rightUpperArm" },
 	{ "name": "flamegunCross", "bone": "flamegunAim", "attachment": "crosshair" },
 	{ "name": "carbineCross", "bone": "carbineAim", "attachment": "crosshair" },
 	{ "name": "mp40Cross", "bone": "mp40Aim", "attachment": "crosshair" },
-	{ "name": "thompsonCross", "bone": "thompsonAim", "attachment": "crosshair" }
+	{ "name": "thompsonCross", "bone": "thompsonAim", "attachment": "crosshair" },
+	{ "name": "bazookaCross", "bone": "bazookaAim", "attachment": "crosshair" }
 ],
 "skins": {
 	"default": {
+		"bazookaCross": {
+			"crosshair": { "x": 0.43, "y": -8.98, "scaleX": 0.7, "scaleY": 0.7, "rotation": 2.8, "width": 1024, "height": 1024 }
+		},
 		"carbineCross": {
 			"crosshair": { "x": 6.68, "y": 4, "scaleX": 0.7, "scaleY": 0.7, "rotation": -1.35, "width": 1024, "height": 1024 }
 		},

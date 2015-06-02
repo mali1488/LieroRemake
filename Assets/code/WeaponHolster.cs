@@ -27,11 +27,13 @@ public class WeaponHolster : MonoBehaviour {
     flameGun = new Weapon(skeletonAnimation, "flamegun", 20f, 5000f, 0.15f, bulletPrefab);
     mp40 = new Weapon(skeletonAnimation, "thompson", 20f, 5000f, 0.15f, bulletPrefab);
     thompson = new Weapon(skeletonAnimation, "mp40", 20f, 5000f, 0.15f, bulletPrefab);
+    bazooka = new Weapon(skeletonAnimation, "bazooka", 20f, 5000f, 0.15f, bulletPrefab);
 
     weaponList.Add(carbine);
     weaponList.Add(flameGun);
     weaponList.Add(mp40);
     weaponList.Add(thompson);
+    weaponList.Add(bazooka);
   }
   public Weapon nextWeapon() {
     if(weaponList.Count-1 == currentWeapon) {
