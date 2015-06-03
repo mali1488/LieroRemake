@@ -7,6 +7,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 public class Player : MonoBehaviour {
 
+  public int lives = 3;
+  public int kills = 0;
+
   public AudioClip audioShoot;
   public AudioClip audioShootBazooka;
   public AudioClip[] audioDie;
@@ -37,7 +40,6 @@ public class Player : MonoBehaviour {
   public float SpeedAccelerationOnGround = 10f;
   public float SpeedAccelerationInAir = 5f;
 
-  private GameManager manager;
   public bool IsDead {get; private set;}
   private bool isHitByGrenade = false;
 
@@ -57,6 +59,7 @@ public class Player : MonoBehaviour {
   //Weapon variables
   private WeaponHolster weaponHolster;
   private Weapon weapon;
+  private string weaponName;
   private bool isBazooka = false;
 
 
@@ -116,6 +119,7 @@ public class Player : MonoBehaviour {
         weaponHolster.Setup(skeletonAnimation);
         weapon = weaponHolster.getCurrentWeapon();
         isBazooka = weapon.IsBazooka();
+        SetWeaponName();
       }
       animPlayer = GetComponent<AnimPlayer>();
       if (animPlayer) {
@@ -124,12 +128,6 @@ public class Player : MonoBehaviour {
       }
     }
   }
-
-  public void setGameManager(GameManager managerToUse)
-  {
-    manager = managerToUse;
-  }
-
 
   public void Update() {
     HandleInput();
@@ -189,11 +187,13 @@ public class Player : MonoBehaviour {
     if (Input.GetKeyDown(prevWeapon)) {
       weapon = weaponHolster.prevWeapon();
       isBazooka = weapon.IsBazooka();
+      SetWeaponName();
       animPlayer.SetBazooka(isBazooka);
     }
 
     if (Input.GetKeyDown(nextWeapon)) {
       weapon = weaponHolster.nextWeapon();
+      SetWeaponName();
       isBazooka = weapon.IsBazooka();
       animPlayer.SetBazooka(isBazooka);
     }
@@ -227,8 +227,6 @@ public class Player : MonoBehaviour {
     } else {
       healthbar.color = new Color32 (255, (byte)Map (curHealth, 0, maxHealth / 2, 0, 255), 0, 255);
     }
-    if (curHealth <= 0.0 && !IsDead)
-      manager.KillPlayer (this);
 
   }
 
@@ -241,12 +239,17 @@ public class Player : MonoBehaviour {
     _isFacingRight = transform.localScale.x > 0;
   }
 
-  public void Kill()
+  public void Die()
   {
     _controller.HandleCollisions = false;
     IsDead = true;
     animPlayer.FallForward ();
     curHealth = 0f;
+    if(lives <= 0) {
+      lives = 0;
+    }else{
+      lives--;
+    }
     if (audio.isPlaying) return;
     audio.clip = audioDie[UnityEngine.Random.Range(0,2)];
     audio.Play();
@@ -255,6 +258,11 @@ public class Player : MonoBehaviour {
 
   public void RespawnAt()
   {
+    StartCoroutine(WaitSpawn());
+  }
+
+  IEnumerator WaitSpawn() {
+    yield return new WaitForSeconds(4);
     if(!_isFacingRight)
       Flip();
     IsDead = false;
@@ -266,6 +274,7 @@ public class Player : MonoBehaviour {
     animPlayer.Idle ();
     transform.position = transformBackUp;
     Debug.Log("Respawn: " + transform.position);
+
   }
 
   public void isHitByGrenadeSet(bool state)
@@ -276,5 +285,29 @@ public class Player : MonoBehaviour {
   public bool isHitByGrenadeGet()
   {
     return isHitByGrenade;
+  }
+
+  public int GetLives() {
+    return lives;
+  }
+
+  public int GetKills() {
+    return kills;
+  }
+
+  public string GetWeaponName() {
+    return weaponName;
+  }
+
+  public float GetHealth() {
+    return curHealth;
+  }
+
+  public void SetKills() {
+    kills++;
+  }
+
+  private void SetWeaponName() {
+    weaponName = weapon.getAttachment();
   }
 }

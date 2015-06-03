@@ -464,6 +464,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d632a3afe80ec43e4a73c9893273c042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 3
+  kills: 0
   audioShoot: {fileID: 8300000, guid: 5a09b7f61e4b5442a8e16171e82f8d8e, type: 3}
   audioShootBazooka: {fileID: 8300000, guid: af9adc36f46444f7b98eec0926e28268, type: 3}
   audioDie:

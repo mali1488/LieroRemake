@@ -11,13 +11,14 @@ public class GameManager : MonoBehaviour {
   public bool isMute = false;
 
   public GameObject spawnedObject;
-  private GameObject player1;
-  private GameObject player2;
+  private GameObject player1Prefab;
+  private GameObject player2Prefab;
+  private Player player1;
+  private Player player2;
+  public GameObject hudPrefab;
+  private Hud hud;
 
   void Start () {
-    /*AudioListener.pause = false;
-      AudioListener.volume = 1;*/
-
     button.onClick.AddListener(() => {
         if(!Input.GetKey("space")){
           Mute();
@@ -25,6 +26,23 @@ public class GameManager : MonoBehaviour {
       });
 
     StartCoroutine(spawn());
+    hud = hudPrefab.GetComponent<Hud>();
+    hud.Setup(player1, player2);
+  }
+
+  void Update() {
+
+    if(player1.GetHealth() <= 0 && !player1.IsDead) {
+      player1.Die();
+      player2.SetKills();
+      player1.RespawnAt();
+    }
+
+    if(player2.GetHealth() <= 0 && !player2.IsDead) {
+      player2.Die();
+      player1.SetKills();
+      player2.RespawnAt();
+    }
   }
 
   IEnumerator spawn() {
@@ -45,12 +63,15 @@ public class GameManager : MonoBehaviour {
       aimDownPlayer2 = PlayerPrefs.GetString ("down2");
       shootPlayer2 = PlayerPrefs.GetString ("shoot2");
     */
-    player1 = Instantiate(spawnedObject);
-    player1.SendMessage("setGameManager",this);
-    player1.GetComponent<Player>().Setup("a", "d", "w", "s", "q", "e", "z", "space", "f", -106, 156, 0, 0, 0.5f, 1.0f);
-    player2 = Instantiate(spawnedObject);
-    player2.SendMessage("setGameManager",this);
-    player2.GetComponent<Player> ().Setup ("left", "right", "up", "down", "k", "l", "m", "n", "b", 20, 156, 0.5f, 0, 0.5f, 1.0f);
+    player1Prefab = Instantiate(spawnedObject);
+    player1 = player1Prefab.GetComponent<Player>();
+    player1.Setup("a", "d", "w", "s", "q", "e", "z", "space", "f", -106, 156, 0, 0, 0.5f, 1.0f);
+
+    player2Prefab = Instantiate(spawnedObject);
+    player2 = player2Prefab.GetComponent<Player>();
+    player2.Setup ("left", "right", "up", "down", "k", "l", "m", "n", "b", 20, 156, 0.5f, 0, 0.5f, 1.0f);
+
+
     yield return null;
   }
 
@@ -67,14 +88,4 @@ public class GameManager : MonoBehaviour {
     }
   }
 
-  public void KillPlayer(Player player)
-  {
-    StartCoroutine(KillPlayerCo(player));
-  }
-  private IEnumerator KillPlayerCo(Player player)
-  {
-    player.Kill();
-    yield return new WaitForSeconds(4f);
-    player.RespawnAt();
-  }
 }
