@@ -51,6 +51,14 @@ public class PlayerTutorial : MonoBehaviour {
   private bool player1 = false;
   private Text tutorialText;
   private bool rotated = false;
+  private bool text0 = false;
+  private bool text1 = false;
+  private bool text2 = false;
+  private bool text3 = false;
+  private bool text4 = false;
+  private bool text5 = false;
+  private int counter = 0;
+  private bool earth = false;
   //Spine animation
 
   private AnimPlayer animPlayer = null;
@@ -122,15 +130,79 @@ public class PlayerTutorial : MonoBehaviour {
     tempText = tempCanvas.transform.GetChild (0).gameObject;
     tempText.transform.position = new Vector3(charPos.x+50f, charPos.y+100f,charPos.z);
     tutorialText = tempText.GetComponent<Text>();
-    tutorialText.text = "Welcome to the Tutorial!";
+	if (!text0 ) {
+			tutorialText.text = "Welcome to the tutorial!";
+			text0 = true;
+		} else if (counter == 150 && !earth) {
+			tutorialText.text = "Player1 is to the left";
+		} else if (counter == 300 && !earth) {
+			tutorialText.text = "Player2 is to the right";
+		} else if (counter == 400 && !earth) {
+			tutorialText.text = "First key is Player1's";
+		} else if (counter == 550 && !earth) {
+			tutorialText.text = "Example: Press T or P";
+		} else if (counter == 700 && !earth) {
+			tutorialText.text = "T interacts with Player1";
+		} else if (counter == 850 && !earth) {
+			tutorialText.text = "P interacts with Player2";
+		} else if (counter == 1000 && !earth) {
+			tutorialText.text = "Lets Try!";
+		} else if (counter == 1150 && !earth) {
+			tutorialText.text = "Press A or Left Arrow";
+		} 
+	if (counter < 2000) {
+			counter += 1;
+		}
 
+	if (earth) {
+		
+		if (counter == 150) {
+			tutorialText.text = "Move Left: A or Left Arrow";
+		} else if (counter == 300) {
+			tutorialText.text = "Move right: D or Right Arrow";
+		} else if (counter == 450) {
+			tutorialText.text = "When you find the Earth";
+		} else if (counter == 600) {
+				tutorialText.text = "Stand close to it!";
+		} else if (counter == 750) {
+			tutorialText.text = "Press F or B to Dig";
+		}else if (counter == 950) {
+			tutorialText.text = "Both Diggin and Shooting";	
+		}else if (counter == 1050) {
+			tutorialText.text = "Removes brown Earth";	
+		}else if (counter == 1200) {
+				tutorialText.text = "Shooting a Player hurts them";	
+		}else if (counter == 1350) {
+			tutorialText.text = "You Can also change Weapons";		
+		}else if (counter == 1450) {
+			tutorialText.text = "With Q and E for Player1";		
+		}else if (counter == 1600) {
+			tutorialText.text = "Or K and L for Player2";	
+		}else if (counter == 1900) {
+			tutorialText.text = "To Exit Press Escape!";	
+		}
+	}
     tempText.transform.position = new Vector3(charPos.x, charPos.y+100f,charPos.z);
 
   }
 
   private void HandleInput() {
+	
+    GameObject tempChild2 = this.transform.GetChild (1).gameObject;
+    Camera tempCam2 = tempChild2.GetComponent<Camera> ();
+    //Vector3 charPos = Camera.current.WorldToScreenPoint (this.transform.position);
+    Vector3 charPos = tempCam2.WorldToScreenPoint (this.transform.position);
+    GameObject tempCanvas = this.transform.GetChild (2).gameObject;
+    tempText = tempCanvas.transform.GetChild (0).gameObject;
+    tempText.transform.position = new Vector3(charPos.x+50f, charPos.y+100f,charPos.z);
+    tutorialText = tempText.GetComponent<Text>();
 
     if (Input.GetKey(moveRight)) {
+		if(!text2){
+			
+				text2 = true;
+				tutorialText.text = "Press space or N!";
+			}
 
       _normalizedHorizontalSpeed = 1;
       if(!_isFacingRight) {
@@ -142,7 +214,12 @@ public class PlayerTutorial : MonoBehaviour {
 
       //MOVE LEFT
     } else if (Input.GetKey(moveLeft)) {
-      _normalizedHorizontalSpeed = -1;
+			if(!text1){
+				text1 = true;
+				tutorialText.text = "Press D or Right Arrow!";
+			}
+
+    	_normalizedHorizontalSpeed = -1;
       if(_isFacingRight) {
         Flip();
       }
@@ -158,15 +235,29 @@ public class PlayerTutorial : MonoBehaviour {
 
     }
     if (_controller.CanJump && Input.GetKeyDown(jump)) {
+			if(!text3){
+				tutorialText.text = "Press and Hold Z or M";
+				text3 = true;
+			}
       _controller.Jump();
       animPlayer.Jump();
     }
 
     if (Input.GetKey(aimUp)) {
+			
+			if(!text5){
+				tutorialText.text = "Press S or Down Arrow";
+				text5 = true;
+			}
       aim.Up();
     }
 
     if (Input.GetKey(aimDown)) {
+			if(!earth){
+				earth = true;
+				counter = 0;
+				tutorialText.text = "Find the brown earth!";
+			}
       aim.Down();
     }
 
@@ -197,6 +288,10 @@ public class PlayerTutorial : MonoBehaviour {
     }
 
     if (Input.GetKeyUp (shoot)) {
+			if(!text4){
+				tutorialText.text = "Aim up: W or Up Arrow";
+				text4 = true;
+			}
       isAimOnce = false;
       isIgnoreFirstShot = true;
     }
