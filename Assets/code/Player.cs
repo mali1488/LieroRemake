@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿/// <summary>
+/// Handles input from user. For example aim, weapon change, movement, fire weapon, audio, health.
+/// </summary>
+using UnityEngine;
 using System.Collections;
 using Spine;
 using System;
@@ -61,6 +64,7 @@ public class Player : MonoBehaviour {
   private Weapon weapon;
   private string weaponName;
   private bool isBazooka = false;
+  private bool wasBazooka = false;
 
 
   //digging
@@ -161,6 +165,7 @@ public class Player : MonoBehaviour {
     } else {
       _normalizedHorizontalSpeed = 0;
       if (_controller.State.IsGrounded && !Input.GetKey(shoot) && !IsDead) {
+
         animPlayer.Idle();
       }
 
@@ -171,11 +176,13 @@ public class Player : MonoBehaviour {
     }
 
     if (Input.GetKey(aimUp)) {
-      aim.Up();
+      aim.Up(isBazooka);
+      Debug.Log("Up: " + aim.GetAngle() + ", " + isBazooka);
     }
 
     if (Input.GetKey(aimDown)) {
-      aim.Down();
+      aim.Down(isBazooka);
+      Debug.Log("Up: " + aim.GetAngle() + ", " + isBazooka);
     }
 
     if (Input.GetKey(digging)) {
@@ -186,16 +193,22 @@ public class Player : MonoBehaviour {
     //Weaponchange input
     if (Input.GetKeyDown(prevWeapon)) {
       weapon = weaponHolster.prevWeapon();
+      wasBazooka = isBazooka;
       isBazooka = weapon.IsBazooka();
+      CheckAngle(isBazooka, wasBazooka);
       SetWeaponName();
       animPlayer.SetBazooka(isBazooka);
+      Debug.Log("Prev: " + aim.GetAngle() + ", " + isBazooka);
     }
 
     if (Input.GetKeyDown(nextWeapon)) {
       weapon = weaponHolster.nextWeapon();
-      SetWeaponName();
+      wasBazooka = isBazooka;
       isBazooka = weapon.IsBazooka();
+      CheckAngle(isBazooka, wasBazooka);
+      SetWeaponName();
       animPlayer.SetBazooka(isBazooka);
+      Debug.Log("Next: " + aim.GetAngle()+ ", " + isBazooka);
     }
 
     if (Input.GetKey (shoot) && Time.time > nextFire){
@@ -209,12 +222,24 @@ public class Player : MonoBehaviour {
         weapon.Shoot(boneBarrel.transform.position, boneBarrel.transform.eulerAngles,_isFacingRight);
       }
 
+      if(!isBazooka) {
+        aim.SetAngle(1);
+      }
       animPlayer.Shoot();
     }
 
     if (Input.GetKeyUp (shoot)) {
       isAimOnce = false;
       isIgnoreFirstShot = true;
+    }
+  }
+
+  private void CheckAngle(bool isBazooka, bool wasBazooka) {
+    if(isBazooka && !wasBazooka) {
+      aim.SetAngle(1);
+    }
+    if(!isBazooka && wasBazooka) {
+      aim.SetAngle(-1);
     }
   }
   private void TakeDamage(float adj) {

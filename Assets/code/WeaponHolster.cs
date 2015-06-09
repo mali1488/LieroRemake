@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿/// <summary>
+/// The manager of the weapons. Initializes all the weapons and handles the swap between them.
+/// </summary>
+using UnityEngine;
 using System.Collections;
 using Spine;
 

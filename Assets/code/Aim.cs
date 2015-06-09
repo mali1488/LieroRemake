@@ -7,6 +7,11 @@ public class Aim : MonoBehaviour {
   private Bone rightUpperArm;
   private Bone torso;
   private SkeletonAnimation skeletonAnimation = null;
+  private float bazookaAngle = 103.73f;
+
+  private float lowerRotationBound = 95.0f;
+  private float upperArmRotationBound = 200.0f;
+  private float upperTorsoRotationBound = 125.0f;
 
   public void Setup(SkeletonAnimation skeletonAnimation) {
     this.skeletonAnimation = skeletonAnimation;
@@ -18,30 +23,42 @@ public class Aim : MonoBehaviour {
     return rightUpperArm.Rotation;
   }
 
-  public void Up() {
+  public void SetAngle(int adj) {
+    float tempArmRot = rightUpperArm.Rotation + adj*bazookaAngle;
+    rightUpperArm.Rotation = Mathf.Clamp(tempArmRot, lowerRotationBound, upperArmRotationBound);
+  }
+
+  public void Up(bool isBazooka) {
     skeletonAnimation.UpdateLocal += delegate(SkeletonRenderer skeletonRenderer) {
-      const float lowerRotationBound = 95.0f;
-      const float upperArmRotationBound = 200.0f;
-      const float upperTorsoRotationBound = 125.0f;
 
       float tempArmRot = rightUpperArm.Rotation += 3;
       float tempTorsoRot = torso.Rotation += 1;
 
-      rightUpperArm.Rotation = Mathf.Clamp(tempArmRot, lowerRotationBound, upperArmRotationBound);
-      torso.Rotation = Mathf.Clamp(tempTorsoRot, lowerRotationBound, upperTorsoRotationBound);
+      float offset;
+      if(isBazooka) {
+        offset = bazookaAngle;
+      }else{
+        offset = 0;
+      }
+
+      rightUpperArm.Rotation = Mathf.Clamp(tempArmRot, lowerRotationBound + offset, upperArmRotationBound + offset);
+      //torso.Rotation = Mathf.Clamp(tempTorsoRot, lowerRotationBound, upperTorsoRotationBound);
     };
   }
 
-  public void Down() {
+  public void Down(bool isBazooka) {
     skeletonAnimation.UpdateLocal += delegate(SkeletonRenderer skeletonRenderer) {
-      const float lowerRotationBound = 95.0f;
-      const float upperArmRotationBound = 200.0f;
-      const float upperTorsoRotationBound = 125.0f;
 
       float tempArmRot = rightUpperArm.Rotation -= 3;
       float tempTorsoRot = torso.Rotation -= 1;
 
-      rightUpperArm.Rotation = Mathf.Clamp(tempArmRot, lowerRotationBound, upperArmRotationBound);
+      float offset;
+      if(isBazooka) {
+        offset = bazookaAngle;
+      }else{
+        offset = 0;
+      }
+      rightUpperArm.Rotation = Mathf.Clamp(tempArmRot, lowerRotationBound + offset, upperArmRotationBound + offset);
       torso.Rotation = Mathf.Clamp(tempTorsoRot, lowerRotationBound, upperTorsoRotationBound);
     };
   }

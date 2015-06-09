@@ -1,3 +1,6 @@
+/// <summary>
+/// Sets the animation for the player.
+/// </summary>
 using UnityEngine;
 using System.Collections;
 using Spine;

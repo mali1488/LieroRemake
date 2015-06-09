@@ -37,6 +37,7 @@ public class PlayerTutorial : MonoBehaviour {
   //Weapon variables
   private WeaponHolster weaponHolster;
   private Weapon weapon;
+  private bool isBazooka;
 
 
   //digging
@@ -163,11 +164,11 @@ public class PlayerTutorial : MonoBehaviour {
     }
 
     if (Input.GetKey(aimUp)) {
-      aim.Up();
+      aim.Up(isBazooka);
     }
 
     if (Input.GetKey(aimDown)) {
-      aim.Down();
+      aim.Down(isBazooka);
     }
 
     if (Input.GetKey(digging)) {

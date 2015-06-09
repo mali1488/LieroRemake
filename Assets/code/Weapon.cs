@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿/// <summary>
+/// The weapon for the player. Holds the texture and the properties of the weapon.
+/// </summary>
+using UnityEngine;
 using System.Collections;
 using Spine;
 
