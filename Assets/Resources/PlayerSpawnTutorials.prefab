@@ -120,8 +120,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164568}
-  m_LocalRotation: {x: 0, y: 0, z: -.0260896552, w: -.999659598}
-  m_LocalPosition: {x: 17.1216927, y: 40.1868935, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -.0116932988, w: -.999931633}
+  m_LocalPosition: {x: 16.8203106, y: 39.6668243, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 474844}
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 138106, guid: 5a420bd851b164743a549ded576254d4, type: 2}
-  rocketPrefab: {fileID: 0}
+  rocketPrefab: {fileID: 157932, guid: 9d2c85c3bd1acd7459b2ae5760487705, type: 2}
 --- !u!114 &11474034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -577,7 +577,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 2166.93335, y: 123.188461}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
