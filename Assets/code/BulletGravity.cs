@@ -13,15 +13,17 @@ public class BulletGravity : MonoBehaviour {
 		}
 	}
 
+	//Handles the collision with the grenade object and something else.
+	//Destroys itself on impact and spawns an explosion
+
 	protected virtual void OnCollisionEnter2D(Collision2D other) {
 		if(other.gameObject.name == "PlayerSpawn(Clone)")
 		{
-			//other.gameObject.SendMessage("FireBloodParticles",gameObject.transform.position, gameObject.transform.position.x > other.gameObject.transform.position.x);
+			
 			other.gameObject.SendMessage("FireBloodParticles",gameObject.transform.position);
 			other.gameObject.SendMessage("TakeDamage", damageToGive);
 			destroy = true;
-			//Debug.Log("CharacterController2D.OnTriggerEnter2D: Aj!");
-			// Destroy(gameObject);
+			
 		}
 		else{
 		    destroy = true;

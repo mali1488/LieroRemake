@@ -12,6 +12,10 @@ public class Grenade : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
+	//Handles the collision with the grenade object and something else.
+	//Destroys itself on impact and spawns an explosion
+	//If colliding with a player, it deals damage and tells the playerobject
+	//that it has been hit by a grenade
 
 	protected virtual void OnCollisionEnter2D(Collision2D other) {
 		if(other.gameObject.name == "PlayerSpawn(Clone)")
